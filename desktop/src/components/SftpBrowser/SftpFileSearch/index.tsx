@@ -60,7 +60,7 @@ export default function SftpFileSearch({
         className={
           isShow ? `${styles.input} ${styles.inputShow}` : styles.input
         }
-        placeholder="Filter"
+        placeholder="Фильтр"
       />
     </div>
   );

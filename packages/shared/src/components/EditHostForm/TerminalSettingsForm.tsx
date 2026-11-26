@@ -22,7 +22,7 @@ export default function TerminalSettingsForm({
     <section className={styles.section} style={wrapperStyle}>
       <div className={styles.sectionTitleWrap}>
         <Text size="3" weight="medium">
-          Terminal Settings
+          Настройки терминала
         </Text>
       </div>
 
@@ -32,7 +32,7 @@ export default function TerminalSettingsForm({
         rules={{
           required: {
             value: true,
-            message: "Please enter font family",
+            message: "Введите семейство шрифтов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -43,11 +43,11 @@ export default function TerminalSettingsForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Font family
+              Семейство шрифтов
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Font family"
+              placeholder="Семейство шрифтов"
               onChange={onInputChange(field.onChange)}
             />
             {fieldState.invalid && (
@@ -65,19 +65,19 @@ export default function TerminalSettingsForm({
         rules={{
           required: {
             value: true,
-            message: "Please enter font size",
+            message: "Введите размер шрифта",
           },
           pattern: {
             value: /^\d+$/,
-            message: "Please enter the number",
+            message: "Введите число",
           },
           min: {
             value: 10,
-            message: "The font size cannot be less than 10",
+            message: "Размер шрифта не может быть меньше 10",
           },
           max: {
             value: 48,
-            message: "The font size cannot be greater than 48",
+            message: "Размер шрифта не может быть больше 48",
           },
         }}
         render={({ field, fieldState }) => (
@@ -88,11 +88,11 @@ export default function TerminalSettingsForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Font size
+              Размер шрифта
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Font size"
+              placeholder="Размер шрифта"
               type="number"
               onChange={onInputChange(field.onChange)}
             />
@@ -111,7 +111,7 @@ export default function TerminalSettingsForm({
         rules={{
           required: {
             value: true,
-            message: "Please select theme",
+            message: "Выберите тему",
           },
         }}
         render={({ field, fieldState }) => (
@@ -122,7 +122,7 @@ export default function TerminalSettingsForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Theme
+              Тема
             </Text>
             <Select.Root
               value={field.value || ""}
@@ -130,7 +130,7 @@ export default function TerminalSettingsForm({
             >
               <Select.Trigger
                 style={{ width: "100%" }}
-                placeholder="Select theme"
+                placeholder="Выберите тему"
               />
               <Select.Content>
                 {TERMINAL_THEMES.map((item) => (

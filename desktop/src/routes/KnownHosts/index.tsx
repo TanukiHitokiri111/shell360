@@ -65,11 +65,11 @@ export default function KnownHosts() {
       confirmDelete({
         content: (
           <div className={styles.confirmContent}>
-            Are you sure to delete the known host:
+            Удалить известный хост:
             {knownHostContent}?
           </div>
         ),
-        failureMessage: "Failed to delete",
+        failureMessage: "Не удалось удалить",
         onDelete: async () => {
           await remove(knownHost);
         },
@@ -89,20 +89,20 @@ export default function KnownHosts() {
   return (
     <div className={styles.page}>
       <ListToolbar
-        title="Known Hosts"
+        title="Известные хосты"
         keyword={keyword}
         onKeywordChange={setKeyword}
-        searchPlaceholder="Filter hosts..."
+        searchPlaceholder="Поиск хостов..."
       />
       <div className={styles.content}>
         {filteredItems.length ? (
           <PanelTable>
             <thead>
               <tr>
-                <th>Hostname / IP</th>
-                <th>Key Type</th>
-                <th>Fingerprint</th>
-                <th>Label</th>
+                <th>Имя хоста / IP</th>
+                <th>Тип ключа</th>
+                <th>Отпечаток</th>
+                <th>Метка</th>
                 <th />
               </tr>
             </thead>
@@ -133,7 +133,7 @@ export default function KnownHosts() {
                         className={styles.actionButton}
                         onClick={(event) => onDelete(event, item)}
                       >
-                        Remove
+                        Удалить
                       </Button>
                     </Flex>
                   </td>
@@ -142,7 +142,7 @@ export default function KnownHosts() {
             </tbody>
           </PanelTable>
         ) : (
-          <Empty desc="There is no known hosts yet." />
+          <Empty desc="Известных хостов пока нет." />
         )}
       </div>
     </div>

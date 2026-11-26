@@ -29,7 +29,7 @@ export function PortForwardingLoading({
   return (
     <div className={styles.root}>
       <div>
-        <div className={styles.title}>Opening {portForwarding.name}...</div>
+        <div className={styles.title}>Открытие {portForwarding.name}...</div>
         <div className={styles.description}>
           {getPortForwardingDesc(portForwarding, hostsMap)}
         </div>
@@ -51,10 +51,10 @@ export function PortForwardingLoading({
               variant="outline"
               onClick={onClose}
             >
-              Close
+              Закрыть
             </Button>
             <Button className={styles.actionButton} onClick={onRetry}>
-              Retry
+              Повторить
             </Button>
           </div>
         </>

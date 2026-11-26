@@ -110,13 +110,15 @@ export default function Hosts() {
       try {
         const copiedHost = await addHost({
           ...omit(host, ["id"]),
-          name: `${getHostName(host)} Copy`,
+          name: `${getHostName(host)} — копия`,
         });
         await refreshHosts();
         setEditHost(copiedHost);
         setIsOpenAddHost(true);
       } catch (err) {
-        message.error({ message: get(err, "message") || "Copy failed" });
+        message.error({
+          message: get(err, "message") || "Не удалось скопировать",
+        });
       }
     },
     [message, refreshHosts],
@@ -126,7 +128,7 @@ export default function Hosts() {
     (host: Host) => {
       const hostname = host.name || `${host.hostname}:${host.port}`;
       confirmDelete({
-        content: `Are you sure to delete the host: ${hostname}?`,
+        content: `Удалить хост ${hostname}?`,
         onDelete: () => deleteHost(host),
         onSuccess: refreshHosts,
       });
@@ -138,10 +140,10 @@ export default function Hosts() {
     <>
       <div className={styles.page}>
         <ListToolbar
-          title="Hosts"
+          title="Хосты"
           keyword={keyword}
           onKeywordChange={setKeyword}
-          searchPlaceholder="Search hosts..."
+          searchPlaceholder="Поиск хостов..."
           viewMode={viewMode}
           onViewModeChange={setViewMode}
           leading={
@@ -170,7 +172,7 @@ export default function Hosts() {
               onClick={() => setIsOpenAddHost(true)}
             >
               <AddIcon width="11" height="11" />
-              New Host
+              Новый хост
             </Button>
             <Button
               type="button"
@@ -179,7 +181,7 @@ export default function Hosts() {
               onClick={handleOpenLocalShell}
             >
               <TerminalIcon width="11" height="11" />
-              Local Shell
+              Локальная оболочка
             </Button>
           </Flex>
         </ListToolbar>
@@ -217,7 +219,7 @@ export default function Hosts() {
                             <div className={styles.cardMetaInline}>
                               <span className={styles.metaPill}>
                                 <JumpIcon className={styles.auxMetaIcon} />
-                                {jumpCount} jump{jumpCount > 1 ? "s" : ""}
+                                Промежуточных хостов: {jumpCount}
                               </span>
                             </div>
                           )}
@@ -243,7 +245,7 @@ export default function Hosts() {
                           onClick={() => onOpenChannel(item)}
                         >
                           <TerminalIcon width="11" height="11" />
-                          Terminal
+                          Терминал
                         </button>
                         <button
                           type="button"
@@ -277,9 +279,9 @@ export default function Hosts() {
                 <PanelTable>
                   <thead>
                     <tr>
-                      <th>Host</th>
-                      <th>Address</th>
-                      <th>Tags</th>
+                      <th>Хост</th>
+                      <th>Адрес</th>
+                      <th>Метки</th>
                       <th />
                     </tr>
                   </thead>
@@ -319,7 +321,7 @@ export default function Hosts() {
                                 className={styles.actionButton}
                                 onClick={() => onOpenChannel(item)}
                               >
-                                Terminal
+                                Терминал
                               </Button>
                               <Button
                                 type="button"
@@ -356,14 +358,14 @@ export default function Hosts() {
               </div>
             )
           ) : (
-            <Empty desc="No hosts yet. Add one to get started.">
+            <Empty desc="Хостов пока нет. Добавьте хост для начала работы.">
               <Button
                 type="button"
                 variant="soft"
                 className={styles.toolbarPrimaryButton}
                 onClick={() => setIsOpenAddHost(true)}
               >
-                New Host
+                Новый хост
               </Button>
             </Empty>
           )}

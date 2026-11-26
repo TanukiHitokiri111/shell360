@@ -57,15 +57,15 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please enter name",
+            message: "Введите название",
           },
           minLength: {
             value: 1,
-            message: "Please enter at least 1 characters",
+            message: "Введите не менее 1 символа",
           },
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -76,11 +76,11 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Name
+              Название
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Name"
+              placeholder="Название"
               onChange={onInputChange(field.onChange)}
             />
             {fieldState.invalid && (
@@ -97,7 +97,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please enter private key",
+            message: "Введите закрытый ключ",
           },
         }}
         render={({ field, fieldState }) => (
@@ -109,7 +109,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Private key
+                Закрытый ключ
               </Text>
               <IconButton
                 type="button"
@@ -123,7 +123,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
             </div>
             <TextArea
               value={field.value || ""}
-              placeholder="Private key"
+              placeholder="Закрытый ключ"
               rows={6}
               onChange={onTextareaChange(field.onChange)}
             />
@@ -147,7 +147,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Public key
+                Открытый ключ
               </Text>
               <IconButton
                 type="button"
@@ -161,7 +161,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
             </div>
             <TextArea
               value={field.value || ""}
-              placeholder="Public key"
+              placeholder="Открытый ключ"
               rows={6}
               onChange={onTextareaChange(field.onChange)}
             />
@@ -183,8 +183,8 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
               sx={undefined}
               className={styles.formFieldInput}
               fullWidth
-              label="Passphrase"
-              placeholder="Passphrase"
+              label="Кодовая фраза"
+              placeholder="Кодовая фраза"
               error={fieldState.invalid}
               helperText={fieldState.error?.message}
             />
@@ -203,7 +203,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Certificate
+                Сертификат
               </Text>
               <IconButton
                 type="button"
@@ -217,7 +217,7 @@ export function EditKeyForm({ formApi, onImportTextFile }: EditKeyFormProps) {
             </div>
             <TextArea
               value={field.value || ""}
-              placeholder="Certificate"
+              placeholder="Сертификат"
               rows={6}
               onChange={onTextareaChange(field.onChange)}
             />

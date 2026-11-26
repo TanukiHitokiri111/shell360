@@ -95,7 +95,7 @@ export default function BasicForm({
         rules={{
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -106,11 +106,11 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Name
+              Название
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Name"
+              placeholder="Название"
               onChange={onInputChange(field.onChange)}
             />
             {fieldState.invalid && (
@@ -128,7 +128,7 @@ export default function BasicForm({
         rules={{
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         render={({ field, fieldState }) => {
@@ -153,7 +153,7 @@ export default function BasicForm({
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Tags
+                Теги
               </Text>
               <div className={styles.tagsFieldWrapper}>
                 <div
@@ -168,7 +168,7 @@ export default function BasicForm({
                         color="gray"
                         size="1"
                         onClick={() => onRemoveTag(tag)}
-                        aria-label="Remove tag"
+                        aria-label="Удалить тег"
                       >
                         ×
                       </IconButton>
@@ -178,7 +178,7 @@ export default function BasicForm({
                     className={styles.tagInput}
                     value={tagInput}
                     placeholder={
-                      values.length ? "" : "Type tag and press Enter"
+                      values.length ? "" : "Введите тег и нажмите Enter"
                     }
                     onChange={(event) => setTagInput(event.target.value)}
                     onKeyDown={(event) =>
@@ -225,15 +225,15 @@ export default function BasicForm({
         rules={{
           required: {
             value: true,
-            message: "Please enter hostname",
+            message: "Введите имя хоста",
           },
           minLength: {
             value: 3,
-            message: "Please enter at least 3 characters",
+            message: "Введите не менее 3 символов",
           },
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -244,11 +244,11 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Hostname
+              Имя хоста
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Hostname"
+              placeholder="Имя хоста"
               onChange={onInputChange(field.onChange)}
             >
               <TextField.Slot>
@@ -270,19 +270,19 @@ export default function BasicForm({
         rules={{
           required: {
             value: true,
-            message: "Please enter port",
+            message: "Введите порт",
           },
           pattern: {
             value: /^\d+$/,
-            message: "Please enter the number",
+            message: "Введите число",
           },
           min: {
             value: 1,
-            message: "The port cannot be less than 1",
+            message: "Порт не может быть меньше 1",
           },
           max: {
             value: 65535,
-            message: "The port cannot be greater than 65535",
+            message: "Порт не может быть больше 65535",
           },
         }}
         render={({ field, fieldState }) => (
@@ -293,11 +293,11 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Port
+              Порт
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Port"
+              placeholder="Порт"
               type="number"
               onChange={onInputChange(field.onChange)}
             >
@@ -320,15 +320,15 @@ export default function BasicForm({
         rules={{
           required: {
             value: true,
-            message: "Please enter username",
+            message: "Введите имя пользователя",
           },
           minLength: {
             value: 1,
-            message: "Please enter at least 1 characters",
+            message: "Введите не менее 1 символа",
           },
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -339,11 +339,11 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Username
+              Имя пользователя
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Username"
+              placeholder="Имя пользователя"
               onChange={onInputChange(field.onChange)}
             >
               <TextField.Slot>
@@ -365,7 +365,7 @@ export default function BasicForm({
         rules={{
           required: {
             value: true,
-            message: "Please select authentication method",
+            message: "Выберите способ аутентификации",
           },
         }}
         render={({ field, fieldState }) => (
@@ -376,7 +376,7 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Authentication method
+              Способ аутентификации
             </Text>
             <Select.Root
               value={field.value || ""}
@@ -384,23 +384,23 @@ export default function BasicForm({
             >
               <Select.Trigger
                 style={{ width: "100%" }}
-                placeholder="Authentication method"
+                placeholder="Способ аутентификации"
               />
               <Select.Content>
                 <Select.Item value={AuthenticationMethod.Password}>
-                  Password
+                  Пароль
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.PublicKey}>
-                  PublicKey
+                  Открытый ключ
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.Certificate}>
-                  Certificate
+                  Сертификат
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.Agent}>
                   SSH Agent
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.KeyboardInteractive}>
-                  Keyboard Interactive
+                  Интерактивная аутентификация
                 </Select.Item>
               </Select.Content>
             </Select.Root>
@@ -420,7 +420,7 @@ export default function BasicForm({
           rules={{
             maxLength: {
               value: 100,
-              message: "Please enter no more than 100 characters",
+              message: "Введите не более 100 символов",
             },
           }}
           render={({ field, fieldState }) => (
@@ -428,8 +428,8 @@ export default function BasicForm({
               <TextFieldPassword
                 {...field}
                 fullWidth
-                label="Password"
-                placeholder="Password"
+                label="Пароль"
+                placeholder="Пароль"
                 error={fieldState.invalid}
                 helperText={fieldState.error?.message}
               />
@@ -446,7 +446,7 @@ export default function BasicForm({
           rules={{
             required: {
               value: true,
-              message: "Please select key",
+              message: "Выберите ключ",
             },
           }}
           render={({ field, fieldState }) => (
@@ -457,7 +457,7 @@ export default function BasicForm({
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Key
+                Ключ
               </Text>
               <Select.Root
                 value={field.value || ""}
@@ -469,9 +469,9 @@ export default function BasicForm({
                   field.onChange(value);
                 }}
               >
-                <Select.Trigger style={{ width: "100%" }} placeholder="Key" />
+                <Select.Trigger style={{ width: "100%" }} placeholder="Ключ" />
                 <Select.Content>
-                  <Select.Item value={ADD_KEY_VALUE}>+ Add key</Select.Item>
+                  <Select.Item value={ADD_KEY_VALUE}>+ Добавить ключ</Select.Item>
                   {keys.map((item) => (
                     <Select.Item key={item.id} value={item.id}>
                       {item.name}
@@ -495,7 +495,7 @@ export default function BasicForm({
         rules={{
           maxLength: {
             value: 500,
-            message: "Please enter no more than 500 characters",
+            message: "Введите не более 500 символов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -506,11 +506,11 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Startup Command
+              Команда запуска
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Command to execute after connection (optional)"
+              placeholder="Команда после подключения (необязательно)"
               onChange={onInputChange(field.onChange)}
             >
               <TextField.Slot>
@@ -532,7 +532,7 @@ export default function BasicForm({
         rules={{
           required: {
             value: true,
-            message: "Please select terminal type",
+            message: "Выберите тип терминала",
           },
         }}
         render={({ field, fieldState }) => (
@@ -543,7 +543,7 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Terminal type
+              Тип терминала
             </Text>
             <Select.Root
               value={field.value || ""}
@@ -551,7 +551,7 @@ export default function BasicForm({
             >
               <Select.Trigger
                 style={{ width: "100%" }}
-                placeholder="Terminal type"
+                placeholder="Тип терминала"
               />
               <Select.Content>
                 {TERMINAL_TYPES.map((item) => (
@@ -584,11 +584,11 @@ export default function BasicForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Environment variables
+              Переменные окружения
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="e.g. KEY1=VALUE1,KEY2=VALUE2"
+              placeholder="Например, KEY1=VALUE1,KEY2=VALUE2"
               onChange={onInputChange(field.onChange)}
             >
               <TextField.Slot>

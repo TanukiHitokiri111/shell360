@@ -112,14 +112,14 @@ export default function TerminalContextMenu({
       <ContextMenu.Content style={{ minWidth: 140 }}>
         {hasSelection && (
           <ContextMenu.Item onSelect={handleCopy} shortcut={copyShortcut}>
-            Copy
+            Копировать
           </ContextMenu.Item>
         )}
         <ContextMenu.Item
           onSelect={() => void handlePaste()}
           shortcut={pasteShortcut}
         >
-          Paste
+          Вставить
         </ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu.Root>

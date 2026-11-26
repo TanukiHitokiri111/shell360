@@ -83,8 +83,8 @@ export function usePortForwardingRuntime() {
       },
       onDelete: () => {
         confirmDelete({
-          content: `Are you sure to delete the tunnel: ${item.name}?`,
-          failureMessage: "Failed to delete",
+          content: `Удалить туннель ${item.name}?`,
+          failureMessage: "Не удалось удалить",
           onDelete: () => deletePortForwarding(item),
           onSuccess: refreshPortForwardings,
         });

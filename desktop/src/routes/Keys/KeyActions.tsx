@@ -27,7 +27,7 @@ export default function KeyActions({
           variant="ghost"
           onClick={() => onCopy(item)}
         >
-          Duplicate
+          Дублировать
         </Button>
         <Button
           type="button"
@@ -35,7 +35,7 @@ export default function KeyActions({
           variant="ghost"
           onClick={() => onEdit(item)}
         >
-          Edit
+          Изменить
         </Button>
         <Button
           type="button"
@@ -44,7 +44,7 @@ export default function KeyActions({
           color="red"
           onClick={() => onDelete(item)}
         >
-          Delete
+          Удалить
         </Button>
       </Flex>
     );
@@ -58,7 +58,7 @@ export default function KeyActions({
         onClick={() => onCopy(item)}
       >
         <ContentCopyIcon width="10" height="10" />
-        Duplicate
+        Дублировать
       </button>
       <button
         type="button"
@@ -66,7 +66,7 @@ export default function KeyActions({
         onClick={() => onEdit(item)}
       >
         <EditIcon width="10" height="10" />
-        Edit
+        Изменить
       </button>
       <button
         type="button"
@@ -74,7 +74,7 @@ export default function KeyActions({
         onClick={() => onDelete(item)}
       >
         <DeleteIcon width="10" height="10" />
-        Delete
+        Удалить
       </button>
     </div>
   );

@@ -230,7 +230,7 @@ function confirmFooter(
             settle(false);
           }}
         >
-          {options.cancelText ?? "Cancel"}
+          {options.cancelText ?? "Отмена"}
         </Button>
       )}
       <Button
@@ -242,7 +242,7 @@ function confirmFooter(
           settle(true);
         }}
       >
-        {options.okText ?? (options.isAlert ? "OK" : "Confirm")}
+        {options.okText ?? (options.isAlert ? "OK" : "Подтвердить")}
       </Button>
     </Flex>
   );

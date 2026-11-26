@@ -88,7 +88,7 @@ export default function Keys() {
   const onDelete = useCallback(
     (item: Key) => {
       confirmDelete({
-        content: `Are you sure to delete the key: ${item.name}?`,
+        content: `Удалить ключ ${item.name}?`,
         onDelete: () => deleteKey(item),
         onSuccess: refreshKeys,
       });
@@ -108,7 +108,7 @@ export default function Keys() {
         setIsOpenAddKey(true);
       } catch (err) {
         message.error({
-          message: get(err, "message") || "Copy failed",
+          message: get(err, "message") || "Не удалось скопировать",
         });
       }
     },
@@ -119,10 +119,10 @@ export default function Keys() {
     <>
       <div className={styles.page}>
         <ListToolbar
-          title="Keys"
+          title="Ключи"
           keyword={keyword}
           onKeywordChange={setKeyword}
-          searchPlaceholder="Search keys..."
+          searchPlaceholder="Поиск ключей..."
           viewMode={viewMode}
           onViewModeChange={setViewMode}
         >
@@ -134,7 +134,7 @@ export default function Keys() {
               onClick={() => setIsOpenGenerateKey(true)}
             >
               <KeyIcon width="11" height="11" />
-              Generate Key
+              Создать ключ
             </Button>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
@@ -142,7 +142,7 @@ export default function Keys() {
                   type="button"
                   variant="soft"
                   className={styles.toolbarPrimaryButton}
-                  aria-label="More key options"
+                  aria-label="Дополнительные действия с ключом"
                 >
                   <MoreIcon width="13" height="13" />
                 </Button>
@@ -150,11 +150,11 @@ export default function Keys() {
               <DropdownMenu.Content side="bottom" align="end" sideOffset={6}>
                 <DropdownMenu.Item onSelect={() => setIsOpenGenerateKey(true)}>
                   <KeyIcon style={{ marginRight: 8 }} />
-                  Generate Key
+                  Создать ключ
                 </DropdownMenu.Item>
                 <DropdownMenu.Item onSelect={() => setIsOpenAddKey(true)}>
                   <FileUploadIcon style={{ marginRight: 8 }} />
-                  Import Key
+                  Импортировать ключ
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu.Root>
@@ -162,7 +162,7 @@ export default function Keys() {
         </ListToolbar>
         <div className={styles.content}>
           {loading ? (
-            <Empty desc="Loading keys..." />
+            <Empty desc="Загрузка ключей..." />
           ) : items.length && viewMode === "grid" ? (
             <div className={styles.grid}>
               {items.map((item) => {
@@ -200,7 +200,9 @@ export default function Keys() {
                       </div>
                     </div>
                     {item.certificate && (
-                      <div className={styles.certBadge}>Signed certificate</div>
+                      <div className={styles.certBadge}>
+                        Подписанный сертификат
+                      </div>
                     )}
                     <KeyActions
                       item={item}
@@ -217,12 +219,12 @@ export default function Keys() {
             <PanelTable>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Private Key</th>
-                  <th>Public Key</th>
-                  <th>Passphrase</th>
-                  <th>Certificate</th>
+                  <th>Имя</th>
+                  <th>Тип</th>
+                  <th>Закрытый ключ</th>
+                  <th>Открытый ключ</th>
+                  <th>Парольная фраза</th>
+                  <th>Сертификат</th>
                   <th />
                 </tr>
               </thead>
@@ -237,7 +239,7 @@ export default function Keys() {
                     </td>
                     <td>
                       {item.privateKey ? (
-                        <span className={styles.stateBadge}>Configured</span>
+                        <span className={styles.stateBadge}>Настроено</span>
                       ) : (
                         "--"
                       )}
@@ -249,7 +251,7 @@ export default function Keys() {
                       {item.passphrase ? (
                         <span className={styles.stateBadge}>
                           <LockIcon width="9" height="9" />
-                          Set
+                          Задан
                         </span>
                       ) : (
                         "--"
@@ -258,7 +260,7 @@ export default function Keys() {
                     <td>
                       {item.certificate ? (
                         <span className={styles.certBadge}>
-                          Signed certificate
+                          Подписанный сертификат
                         </span>
                       ) : (
                         "--"
@@ -278,7 +280,7 @@ export default function Keys() {
               </tbody>
             </PanelTable>
           ) : (
-            <Empty desc="There is no key yet, add it now.">
+            <Empty desc="Ключей пока нет. Добавьте ключ.">
               <Button
                 type="button"
                 variant="soft"
@@ -286,7 +288,7 @@ export default function Keys() {
                 onClick={() => setIsOpenAddKey(true)}
               >
                 <FileUploadIcon width="11" height="11" />
-                Import Key
+                Импортировать ключ
               </Button>
               <Button
                 type="button"
@@ -295,7 +297,7 @@ export default function Keys() {
                 onClick={() => setIsOpenGenerateKey(true)}
               >
                 <KeyIcon width="11" height="11" />
-                Generate Key
+                Создать ключ
               </Button>
             </Empty>
           )}

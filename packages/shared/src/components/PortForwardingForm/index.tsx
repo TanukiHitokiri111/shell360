@@ -22,15 +22,15 @@ export type PortForwardingFormProps = {
 
 const PORT_FORWARDING_TYPES = [
   {
-    label: "Local tunnel",
+    label: "Локальный туннель",
     value: PortForwardingType.Local,
   },
   {
-    label: "Remote tunnel",
+    label: "Удалённый туннель",
     value: PortForwardingType.Remote,
   },
   {
-    label: "Dynamic tunnel",
+    label: "Динамический туннель",
     value: PortForwardingType.Dynamic,
   },
 ];
@@ -48,15 +48,15 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please enter name",
+            message: "Введите название",
           },
           minLength: {
             value: 1,
-            message: "Please enter at least 1 characters",
+            message: "Введите не менее 1 символа",
           },
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         defaultValue=""
@@ -68,11 +68,11 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Name
+              Название
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Name"
+              placeholder="Название"
               onChange={onInputChange(field.onChange)}
             />
             {fieldState.invalid && (
@@ -89,7 +89,7 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please select tunnel type",
+            message: "Выберите тип туннеля",
           },
         }}
         render={({ field, fieldState }) => (
@@ -100,7 +100,7 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Tunnel type
+              Тип туннеля
             </Text>
             <Select.Root
               value={field.value || PortForwardingType.Local}
@@ -130,7 +130,7 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please select host",
+            message: "Выберите хост",
           },
         }}
         render={({ field, fieldState }) => (
@@ -141,7 +141,7 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Host
+              Хост
             </Text>
             <Select.Root
               value={field.value || ""}
@@ -149,7 +149,7 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
             >
               <Select.Trigger
                 style={{ width: "100%" }}
-                placeholder="Select host"
+                placeholder="Выберите хост"
               />
               <Select.Content>
                 {hostOptions.map((item) => (
@@ -174,15 +174,15 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please enter local address",
+            message: "Введите локальный адрес",
           },
           minLength: {
             value: 3,
-            message: "Please enter at least 3 characters",
+            message: "Введите не менее 3 символов",
           },
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         render={({ field, fieldState }) => (
@@ -193,11 +193,11 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Local address
+              Локальный адрес
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Local address"
+              placeholder="Локальный адрес"
               onChange={onInputChange(field.onChange)}
             />
             {fieldState.invalid && (
@@ -215,19 +215,19 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please enter local port",
+            message: "Введите локальный порт",
           },
           pattern: {
             value: /^\d+$/,
-            message: "Please enter the number",
+            message: "Введите число",
           },
           min: {
             value: 1,
-            message: "The local port cannot be less than 1",
+            message: "Локальный порт не может быть меньше 1",
           },
           max: {
             value: 65535,
-            message: "The local port cannot be greater than 65535",
+            message: "Локальный порт не может быть больше 65535",
           },
         }}
         render={({ field, fieldState }) => (
@@ -238,11 +238,11 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Local port
+              Локальный порт
             </Text>
             <TextField.Root
               value={field.value === undefined ? "" : field.value}
-              placeholder="Local port"
+              placeholder="Локальный порт"
               type="number"
               onChange={onInputChange(field.onChange)}
             />
@@ -263,15 +263,15 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
             rules={{
               required: {
                 value: true,
-                message: "Please enter remote address",
+                message: "Введите удалённый адрес",
               },
               minLength: {
                 value: 3,
-                message: "Please enter at least 3 characters",
+                message: "Введите не менее 3 символов",
               },
               maxLength: {
                 value: 60,
-                message: "Please enter no more than 60 characters",
+                message: "Введите не более 60 символов",
               },
             }}
             render={({ field, fieldState }) => (
@@ -282,11 +282,11 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
                   weight="medium"
                   className={styles.fieldLabel}
                 >
-                  Remote address
+                  Удалённый адрес
                 </Text>
                 <TextField.Root
                   value={field.value || ""}
-                  placeholder="Remote address"
+                  placeholder="Удалённый адрес"
                   onChange={onInputChange(field.onChange)}
                 />
                 {fieldState.invalid && (
@@ -304,19 +304,19 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
             rules={{
               required: {
                 value: true,
-                message: "Please enter remote port",
+                message: "Введите удалённый порт",
               },
               pattern: {
                 value: /^\d+$/,
-                message: "Please enter the number",
+                message: "Введите число",
               },
               min: {
                 value: 1,
-                message: "The remote port cannot be less than 1",
+                message: "Удалённый порт не может быть меньше 1",
               },
               max: {
                 value: 65535,
-                message: "The remote port cannot be greater than 65535",
+                message: "Удалённый порт не может быть больше 65535",
               },
             }}
             render={({ field, fieldState }) => (
@@ -327,11 +327,11 @@ export function PortForwardingForm({ formApi }: PortForwardingFormProps) {
                   weight="medium"
                   className={styles.fieldLabel}
                 >
-                  Remote port
+                  Удалённый порт
                 </Text>
                 <TextField.Root
                   value={field.value === undefined ? "" : field.value}
-                  placeholder="Remote port"
+                  placeholder="Удалённый порт"
                   type="number"
                   onChange={onInputChange(field.onChange)}
                 />

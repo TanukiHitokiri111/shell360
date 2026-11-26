@@ -6,7 +6,6 @@ import { type MutableRefObject, useCallback, useRef, useState } from "react";
 import { joinSftpPath, type TransferQueueItem, uuidV4 } from "shared";
 import { useFileTransfersActions } from "./fileTransfer.atom";
 import {
-  formatTransferCount,
   getErrorMessage,
   getSftpBasename,
 } from "./messages";
@@ -263,11 +262,11 @@ export default function useSftpActions({
       if (conflicts.length > 0) {
         const preview = conflicts.slice(0, 5).join(", ");
         const more =
-          conflicts.length > 5 ? ` and ${conflicts.length - 5} more` : "";
+          conflicts.length > 5 ? ` и ещё ${conflicts.length - 5}` : "";
         const confirmed = await modal.confirm({
-          title: "Overwrite existing files?",
-          content: `${formatTransferCount(conflicts.length, "file")} already exist in this folder and will be overwritten: ${preview}${more}`,
-          okText: "Overwrite",
+          title: "Перезаписать существующие файлы?",
+          content: `Файлов для перезаписи: ${conflicts.length}. Они уже существуют в этой папке: ${preview}${more}`,
+          okText: "Перезаписать",
           danger: true,
         });
         if (!confirmed) {
@@ -422,7 +421,7 @@ export default function useSftpActions({
                     eta: -1,
                     error: isCancelled
                       ? undefined
-                      : getErrorMessage(err, "Upload failed"),
+                      : getErrorMessage(err, "Ошибка отправки"),
                   }
                 : queueItem,
             );
@@ -490,19 +489,19 @@ export default function useSftpActions({
 
       if (succeededCount > 0 && failedCount === 0 && cancelledCount === 0) {
         message.success({
-          message: `Uploaded ${formatTransferCount(succeededCount, "file")} to ${dirnameRef.current}`,
+          message: `Отправлено файлов: ${succeededCount}; папка: ${dirnameRef.current}`,
         });
       } else if (succeededCount > 0) {
         message.warning({
-          message: `Upload finished: ${succeededCount} uploaded, ${failedCount} failed, ${cancelledCount} cancelled`,
+          message: `Отправка завершена: отправлено ${succeededCount}, ошибок ${failedCount}, отменено ${cancelledCount}`,
         });
       } else if (failedCount > 0) {
         message.error({
-          message: `Upload failed: ${formatTransferCount(failedCount, "file")} could not be uploaded`,
+          message: `Ошибка отправки: не удалось отправить файлов: ${failedCount}`,
         });
       } else if (cancelledCount > 0 || batch.aborted) {
         message.info({
-          message: "Upload cancelled",
+          message: "Отправка отменена",
         });
       }
       if (failedCount > 0 && succeededCount === 0) {
@@ -520,7 +519,7 @@ export default function useSftpActions({
       },
       onError: (err) =>
         message.error({
-          message: `Failed to upload files: ${getErrorMessage(err)}`,
+          message: `Не удалось отправить файлы: ${getErrorMessage(err)}`,
         }),
     },
   );
@@ -645,7 +644,7 @@ export default function useSftpActions({
                   status: "failed" as const,
                   speed: 0,
                   eta: -1,
-                  error: getErrorMessage(err, "Download failed"),
+                  error: getErrorMessage(err, "Ошибка скачивания"),
                 }
               : item,
           );
@@ -672,11 +671,11 @@ export default function useSftpActions({
         if (!completed) {
           return;
         }
-        message.success({ message: `Downloaded "${name}"` });
+        message.success({ message: `Скачано "${name}"` });
       },
       onError: (err, [{ name }]) =>
         message.error({
-          message: `Failed to download "${name}": ${getErrorMessage(err)}`,
+          message: `Не удалось скачать "${name}": ${getErrorMessage(err)}`,
         }),
     },
   );
@@ -690,11 +689,11 @@ export default function useSftpActions({
       onFinally: () => refreshDir(),
       onSuccess: (_, [{ path }]) =>
         message.success({
-          message: `Removed file "${getSftpBasename(path)}"`,
+          message: `Удалён файл "${getSftpBasename(path)}"`,
         }),
       onError: (err, [{ path }]) =>
         message.error({
-          message: `Failed to remove file "${getSftpBasename(path)}": ${getErrorMessage(err)}`,
+          message: `Не удалось удалить файл "${getSftpBasename(path)}": ${getErrorMessage(err)}`,
         }),
     },
   );
@@ -708,11 +707,11 @@ export default function useSftpActions({
       onFinally: () => refreshDir(),
       onSuccess: (_, [{ path }]) =>
         message.success({
-          message: `Removed folder "${getSftpBasename(path)}"`,
+          message: `Удалена папка "${getSftpBasename(path)}"`,
         }),
       onError: (err, [{ path }]) =>
         message.error({
-          message: `Failed to remove folder "${getSftpBasename(path)}": ${getErrorMessage(err)}`,
+          message: `Не удалось удалить папку "${getSftpBasename(path)}": ${getErrorMessage(err)}`,
         }),
     },
   );

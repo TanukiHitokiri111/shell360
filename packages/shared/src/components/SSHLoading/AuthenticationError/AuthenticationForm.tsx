@@ -37,7 +37,7 @@ export function AuthenticationForm({
         rules={{
           required: {
             value: true,
-            message: "Please select authentication method",
+            message: "Выберите способ аутентификации",
           },
         }}
         render={({ field, fieldState }) => (
@@ -48,7 +48,7 @@ export function AuthenticationForm({
               weight="medium"
               className={styles.fieldLabel}
             >
-              Authentication method
+              Способ аутентификации
             </Text>
             <Select.Root
               value={field.value}
@@ -57,19 +57,19 @@ export function AuthenticationForm({
               <Select.Trigger style={{ width: "100%" }} />
               <Select.Content>
                 <Select.Item value={AuthenticationMethod.Password}>
-                  Password
+                  Пароль
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.PublicKey}>
-                  PublicKey
+                  Открытый ключ
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.Certificate}>
-                  Certificate
+                  Сертификат
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.Agent}>
-                  SSH Agent
+                  SSH-агент
                 </Select.Item>
                 <Select.Item value={AuthenticationMethod.KeyboardInteractive}>
-                  Keyboard Interactive
+                  Интерактивная аутентификация
                 </Select.Item>
               </Select.Content>
             </Select.Root>
@@ -89,7 +89,7 @@ export function AuthenticationForm({
           rules={{
             maxLength: {
               value: 100,
-              message: "Please enter no more than 100 characters",
+              message: "Введите не более 100 символов",
             },
           }}
           render={({ field, fieldState }) => (
@@ -100,12 +100,12 @@ export function AuthenticationForm({
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Password
+                Пароль
               </Text>
               <TextFieldPassword
                 value={field.value || ""}
                 error={fieldState.invalid}
-                placeholder="Password"
+                placeholder="Пароль"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   field.onChange(e.target.value)
                 }
@@ -128,7 +128,7 @@ export function AuthenticationForm({
           rules={{
             required: {
               value: true,
-              message: "Please select key",
+              message: "Выберите ключ",
             },
           }}
           render={({ field, fieldState }) => (
@@ -139,7 +139,7 @@ export function AuthenticationForm({
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Key
+                Ключ
               </Text>
               <Select.Root
                 value={field.value || ""}
@@ -154,10 +154,12 @@ export function AuthenticationForm({
               >
                 <Select.Trigger
                   style={{ width: "100%" }}
-                  placeholder="Select key"
+                  placeholder="Выберите ключ"
                 />
                 <Select.Content>
-                  <Select.Item value={ADD_KEY_VALUE}>+ Add key</Select.Item>
+                  <Select.Item value={ADD_KEY_VALUE}>
+                    + Добавить ключ
+                  </Select.Item>
                   {keyOptions.map((item) => (
                     <Select.Item key={item.id} value={item.id}>
                       {item.name}

@@ -40,23 +40,23 @@ export default function PortForwardingCard({
       </div>
       <div className={styles.cardMetaGrid}>
         <div className={styles.metaItem}>
-          <span className={styles.metaLabel}>Local Address</span>
+          <span className={styles.metaLabel}>Локальный адрес</span>
           <EndpointValue value={item.localAddress} />
         </div>
         <div className={styles.metaItem}>
-          <span className={styles.metaLabel}>Local Port</span>
+          <span className={styles.metaLabel}>Локальный порт</span>
           <EndpointValue value={item.localPort} />
         </div>
         <div className={styles.metaItem}>
-          <span className={styles.metaLabel}>Remote Address</span>
+          <span className={styles.metaLabel}>Удалённый адрес</span>
           <EndpointValue value={item.remoteAddress} />
         </div>
         <div className={styles.metaItem}>
-          <span className={styles.metaLabel}>Remote Port</span>
+          <span className={styles.metaLabel}>Удалённый порт</span>
           <EndpointValue value={item.remotePort} />
         </div>
         <div className={styles.metaItemWide}>
-          <span className={styles.metaLabel}>Host</span>
+          <span className={styles.metaLabel}>Хост</span>
           <HostBadge host={host} tagTone={tagTone} />
         </div>
       </div>

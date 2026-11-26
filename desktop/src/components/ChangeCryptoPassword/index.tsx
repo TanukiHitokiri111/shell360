@@ -37,13 +37,13 @@ export default function ChangeCryptoPassword({
       manual: true,
       onSuccess: () => {
         message.success({
-          message: "Encryption password changed successfully",
+          message: "Пароль шифрования изменён",
         });
         onOk();
       },
       onError: () => {
         message.error({
-          message: "Failed to change encryption password",
+          message: "Не удалось изменить пароль шифрования",
         });
       },
     },
@@ -59,44 +59,43 @@ export default function ChangeCryptoPassword({
   return (
     <Dialog.Root open={open}>
       <Dialog.Content style={{ maxWidth: 420 }}>
-        <Dialog.Title>Change Encryption Password</Dialog.Title>
+        <Dialog.Title>Изменение пароля шифрования</Dialog.Title>
         <Loading loading={loading} size={32}>
           <Dialog.Description size="2" color="gray">
-            Enter your current password and choose a new one to re-encrypt your
-            application data.
+            Введите текущий пароль и выберите новый для повторного шифрования данных приложения.
           </Dialog.Description>
           <form noValidate autoComplete="off">
             <Flex direction="column" gap="4" mt="4">
               <CryptoPasswordField
                 control={formApi.control}
                 name="oldPassword"
-                label="Old Password"
-                placeholder="Old password"
-                requiredMessage="Please enter old password"
+                label="Старый пароль"
+                placeholder="Старый пароль"
+                requiredMessage="Введите старый пароль"
               />
               <CryptoPasswordField
                 control={formApi.control}
                 name="password"
-                label="Password"
-                placeholder="Password"
-                requiredMessage="Please enter password"
+                label="Пароль"
+                placeholder="Пароль"
+                requiredMessage="Введите пароль"
               />
               <CryptoPasswordField
                 control={formApi.control}
                 name="confirmPassword"
-                label="Confirm Password"
-                placeholder="Confirm password"
-                requiredMessage="Please enter confirm password"
+                label="Подтверждение пароля"
+                placeholder="Подтвердите пароль"
+                requiredMessage="Подтвердите пароль"
                 matchField="password"
               />
             </Flex>
           </form>
           <Flex gap="3" justify="end" mt="4">
             <Button variant="outline" disabled={loading} onClick={onCancel}>
-              Cancel
+              Отмена
             </Button>
             <Button loading={loading} onClick={formApi.handleSubmit(onSubmit)}>
-              Submit
+              Подтвердить
             </Button>
           </Flex>
         </Loading>

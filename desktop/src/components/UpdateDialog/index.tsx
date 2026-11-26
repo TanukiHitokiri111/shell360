@@ -55,7 +55,7 @@ export default function UpdateDialog() {
 
   const releaseNotes = useMemo(() => {
     const value = update?.body?.trim();
-    return value || "No release notes available for this update.";
+    return value || "Для этого обновления нет описания изменений.";
   }, [update]);
 
   const formatBytes = (bytes?: number) => {
@@ -79,12 +79,12 @@ export default function UpdateDialog() {
 
   const downloadedText = `${formatBytes(downloaded)} / ${formatBytes(total)}`;
   const progressLabel = isDownloadSuccess
-    ? "Download completed"
+    ? "Загрузка завершена"
     : isDownloading
-      ? "Downloading update package"
+      ? "Загрузка обновления"
       : error
-        ? "Download failed"
-        : "Ready to download";
+        ? "Ошибка загрузки"
+        : "Готово к загрузке";
 
   return (
     <Dialog.Root open={openUpdateDialog} onOpenChange={setOpenUpdateDialog}>
@@ -93,17 +93,17 @@ export default function UpdateDialog() {
           <div className={styles.header}>
             <div className={styles.titleArea}>
               <Dialog.Title className={styles.title}>
-                {isDownloadSuccess ? "Update Ready" : "New Version Available"}
+                {isDownloadSuccess ? "Обновление готово" : "Доступна новая версия"}
               </Dialog.Title>
               <Dialog.Description className={styles.subtitle}>
                 {isDownloadSuccess
-                  ? 'The update package is ready. Click "Install" to apply changes.'
-                  : "A newer build is available. Download now for the latest improvements."}
+                  ? 'Обновление загружено. Нажмите «Установить», чтобы применить изменения.'
+                  : "Доступна новая версия приложения. Загрузите её, чтобы получить последние улучшения."}
               </Dialog.Description>
             </div>
             <button
               type="button"
-              aria-label="Close"
+              aria-label="Закрыть"
               className={styles.closeBtn}
               onClick={() => setOpenUpdateDialog(false)}
             >
@@ -113,15 +113,15 @@ export default function UpdateDialog() {
 
           <div className={styles.versionRow}>
             <div className={styles.versionCell}>
-              <span className={styles.versionLabel}>Current</span>
+              <span className={styles.versionLabel}>Текущая</span>
               <span className={styles.versionValue}>{currentVersion}</span>
             </div>
             <div className={styles.versionCell}>
-              <span className={styles.versionLabel}>Latest</span>
+              <span className={styles.versionLabel}>Последняя</span>
               <span className={styles.versionValue}>{nextVersion}</span>
             </div>
             <div className={styles.versionCell}>
-              <span className={styles.versionLabel}>Published</span>
+              <span className={styles.versionLabel}>Опубликовано</span>
               <span className={styles.versionValue}>{publishedAt}</span>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function UpdateDialog() {
             </div>
           )}
 
-          <div className={styles.sectionLabel}>Release notes</div>
+          <div className={styles.sectionLabel}>Описание изменений</div>
           <div className={styles.notesBox}>{releaseNotes}</div>
 
           {!!error && (
@@ -155,13 +155,13 @@ export default function UpdateDialog() {
             disabled={isDownloading}
             onClick={() => setOpenUpdateDialog(false)}
           >
-            Cancel
+            Отмена
           </Button>
           {isDownloadSuccess ? (
-            <Button onClick={install}>Install</Button>
+            <Button onClick={install}>Установить</Button>
           ) : (
             <Button disabled={isDownloading} onClick={download}>
-              Download
+              Загрузить
             </Button>
           )}
         </div>

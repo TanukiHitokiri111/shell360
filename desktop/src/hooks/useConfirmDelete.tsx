@@ -18,10 +18,10 @@ export function useConfirmDelete() {
   return useCallback(
     ({
       content,
-      failureMessage = "Deletion failed",
+      failureMessage = "Не удалось удалить",
       onDelete,
       onSuccess,
-      title = "Delete Confirmation",
+      title = "Подтверждение удаления",
     }: ConfirmDeleteOptions) => {
       modal.confirm({
         title,

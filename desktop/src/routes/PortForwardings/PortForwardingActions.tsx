@@ -29,22 +29,22 @@ export default function PortForwardingActions({
         className={clsx(actionClass, isRunning && dangerClass)}
         onClick={onToggle}
       >
-        {isRunning ? "Stop" : "Start"}
+        {isRunning ? "Остановить" : "Запустить"}
       </button>
       <button type="button" className={actionClass} onClick={onEdit}>
-        Edit
+        Изменить
       </button>
       <button type="button" className={deleteClass} onClick={onDelete}>
-        Delete
+        Удалить
       </button>
     </div>
   ) : (
     <Flex gap="1">
       <Button size="1" variant="ghost" type="button" onClick={onToggle}>
-        {isRunning ? "Stop" : "Start"}
+        {isRunning ? "Остановить" : "Запустить"}
       </Button>
       <Button size="1" variant="ghost" type="button" onClick={onEdit}>
-        Edit
+        Изменить
       </Button>
       <Button
         size="1"
@@ -53,7 +53,7 @@ export default function PortForwardingActions({
         type="button"
         onClick={onDelete}
       >
-        Delete
+        Удалить
       </Button>
     </Flex>
   );

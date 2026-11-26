@@ -41,7 +41,7 @@ export function KeyboardInteractivePromptForm({
     });
   };
 
-  const title = data.name?.trim() || "Keyboard interactive authentication";
+  const title = data.name?.trim() || "Интерактивная аутентификация";
 
   return (
     <form
@@ -59,7 +59,7 @@ export function KeyboardInteractivePromptForm({
     >
       <ErrorText
         title={title}
-        message={data.instructions?.trim() || "Please answer the prompts."}
+        message={data.instructions?.trim() || "Ответьте на запросы сервера."}
       />
       {data.prompts.map((prompt, index) => {
         const key = `${index}-${prompt.prompt}`;
@@ -93,14 +93,14 @@ export function KeyboardInteractivePromptForm({
       })}
       <div className={styles.actions}>
         <StatusButton variant="outlined" onClick={onClose}>
-          Close
+          Закрыть
         </StatusButton>
         <Button
           type="submit"
           className={styles.statusButton}
           loading={submitting}
         >
-          Submit
+          Отправить
         </Button>
       </div>
     </form>

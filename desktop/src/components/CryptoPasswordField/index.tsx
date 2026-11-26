@@ -31,16 +31,16 @@ export default function CryptoPasswordField<T extends FieldValues>({
         required: { value: true, message: requiredMessage },
         minLength: {
           value: 8,
-          message: "Please enter at least 8 characters",
+          message: "Введите не менее 8 символов",
         },
         maxLength: {
           value: 128,
-          message: "Please enter no more than 128 characters",
+          message: "Введите не более 128 символов",
         },
         validate: matchField
           ? (value, formValues) => {
               if (value !== formValues[matchField]) {
-                return "The password confirmation does not match the password";
+                return "Пароли не совпадают";
               }
               return true;
             }

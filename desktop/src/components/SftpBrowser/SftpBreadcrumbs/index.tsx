@@ -69,13 +69,13 @@ export default function SftpBreadcrumbs({
           onChange={(e) => setEditPath(e.target.value)}
           onKeyDown={handleKeyDown}
           autoFocus
-          placeholder="Enter path..."
+          placeholder="Введите путь..."
         />
         <div className={styles.editActions}>
           <button
             type="button"
             className={styles.confirmButton}
-            title="Confirm"
+            title="Подтвердить"
             onClick={() => handleConfirmEdit()}
           >
             <CheckIcon />
@@ -83,7 +83,7 @@ export default function SftpBreadcrumbs({
           <button
             type="button"
             className={styles.cancelButton}
-            title="Cancel"
+            title="Отмена"
             onClick={handleCancelEdit}
           >
             <CloseIcon />

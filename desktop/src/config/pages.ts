@@ -14,23 +14,23 @@ export type PageConfig = {
 };
 
 export const PAGES: PageConfig[] = [
-  { path: "/", label: "Hosts", Icon: HostIcon, section: "main" },
+  { path: "/", label: "Хосты", Icon: HostIcon, section: "main" },
   {
     path: "/port-forwardings",
-    label: "Tunnels",
+    label: "Туннели",
     Icon: SiteMapIcon,
     section: "main",
   },
-  { path: "/keys", label: "Keys", Icon: KeyIcon, section: "main" },
+  { path: "/keys", label: "Ключи", Icon: KeyIcon, section: "main" },
   {
     path: "/known-hosts",
-    label: "Known Hosts",
+    label: "Известные хосты",
     Icon: FingerprintIcon,
     section: "main",
   },
   {
     path: "/settings",
-    label: "Settings",
+    label: "Настройки",
     Icon: SettingsIcon,
     section: "bottom",
   },

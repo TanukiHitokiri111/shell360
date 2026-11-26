@@ -37,7 +37,7 @@ export default function useCreate({
     async (path: string) => {
       const isExists = await sftpRef.current?.sftpExists(path);
       if (isExists) {
-        throw new Error(`The path "${path}" already exists`);
+        throw new Error(`Путь "${path}" уже существует`);
       }
       await sftpRef.current?.sftpCreateFile(path);
     },
@@ -45,13 +45,13 @@ export default function useCreate({
       manual: true,
       onSuccess: (_, [path]) => {
         message.success({
-          message: `Created file "${getSftpBasename(path)}"`,
+          message: `Создан файл "${getSftpBasename(path)}"`,
         });
         refreshDir();
       },
       onError: (err) =>
         message.error({
-          message: `Failed to create file: ${getErrorMessage(err)}`,
+          message: `Не удалось создать файл: ${getErrorMessage(err)}`,
         }),
     },
   );
@@ -60,7 +60,7 @@ export default function useCreate({
     async (path: string) => {
       const isExists = await sftpRef.current?.sftpExists(path);
       if (isExists) {
-        throw new Error(`The path "${path}" already exists`);
+        throw new Error(`Путь "${path}" уже существует`);
       }
 
       await sftpRef.current?.sftpCreateDir(path);
@@ -69,13 +69,13 @@ export default function useCreate({
       manual: true,
       onSuccess: (_, [path]) => {
         message.success({
-          message: `Created folder "${getSftpBasename(path)}"`,
+          message: `Создана папка "${getSftpBasename(path)}"`,
         });
         refreshDir();
       },
       onError: (err) =>
         message.error({
-          message: `Failed to create folder: ${getErrorMessage(err)}`,
+          message: `Не удалось создать папку: ${getErrorMessage(err)}`,
         }),
     },
   );

@@ -67,9 +67,9 @@ export default function LocalTerminalSettingsDialog({
       }}
     >
       <Dialog.Content style={{ maxWidth: 420 }}>
-        <Dialog.Title>Local Terminal Settings</Dialog.Title>
+        <Dialog.Title>Настройки локального терминала</Dialog.Title>
         <Dialog.Description size="2" color="gray">
-          Configure the font, theme, and shell for the built-in local terminal.
+          Настройте шрифт, тему и оболочку встроенного локального терминала.
         </Dialog.Description>
         <form noValidate autoComplete="off">
           <Flex direction="column" gap="4" mt="4">
@@ -77,16 +77,16 @@ export default function LocalTerminalSettingsDialog({
               name="fontFamily"
               control={formApi.control}
               rules={{
-                required: { value: true, message: "Please enter font family" },
+                required: { value: true, message: "Введите семейство шрифтов" },
               }}
               render={({ field, fieldState }) => (
                 <Flex direction="column" gap="1">
                   <Text as="label" size="2" weight="medium">
-                    Font family
+                    Семейство шрифтов
                   </Text>
                   <TextField.Root
                     value={field.value}
-                    placeholder="Font family"
+                    placeholder="Семейство шрифтов"
                     onChange={onInputChange(field.onChange)}
                   />
                   {fieldState.invalid && (
@@ -102,19 +102,19 @@ export default function LocalTerminalSettingsDialog({
               name="fontSize"
               control={formApi.control}
               rules={{
-                required: { value: true, message: "Please enter font size" },
-                pattern: { value: /^\d+$/, message: "Please enter a number" },
-                min: { value: 10, message: "Min font size is 10" },
-                max: { value: 48, message: "Max font size is 48" },
+                required: { value: true, message: "Введите размер шрифта" },
+                pattern: { value: /^\d+$/, message: "Введите число" },
+                min: { value: 10, message: "Минимальный размер шрифта — 10" },
+                max: { value: 48, message: "Максимальный размер шрифта — 48" },
               }}
               render={({ field, fieldState }) => (
                 <Flex direction="column" gap="1">
                   <Text as="label" size="2" weight="medium">
-                    Font size
+                    Размер шрифта
                   </Text>
                   <TextField.Root
                     value={field.value}
-                    placeholder="Font size"
+                    placeholder="Размер шрифта"
                     type="number"
                     onChange={onInputChange(field.onChange)}
                   />
@@ -131,12 +131,12 @@ export default function LocalTerminalSettingsDialog({
               name="theme"
               control={formApi.control}
               rules={{
-                required: { value: true, message: "Please select theme" },
+                required: { value: true, message: "Выберите тему" },
               }}
               render={({ field, fieldState }) => (
                 <Flex direction="column" gap="1">
                   <Text as="label" size="2" weight="medium">
-                    Theme
+                    Тема
                   </Text>
                   <Select.Root
                     value={field.value}
@@ -144,7 +144,7 @@ export default function LocalTerminalSettingsDialog({
                   >
                     <Select.Trigger
                       style={{ width: "100%" }}
-                      placeholder="Select theme"
+                      placeholder="Выберите тему"
                     />
                     <Select.Content>
                       {TERMINAL_THEMES.map((item) => (
@@ -169,15 +169,15 @@ export default function LocalTerminalSettingsDialog({
               render={({ field }) => (
                 <Flex direction="column" gap="1">
                   <Text as="label" size="2" weight="medium">
-                    Shell path
+                    Путь к оболочке
                   </Text>
                   <TextField.Root
                     value={field.value}
-                    placeholder="Auto-detect (powershell / zsh / bash)"
+                    placeholder="Автоопределение (powershell / zsh / bash)"
                     onChange={onInputChange(field.onChange)}
                   />
                   <Text size="1" color="gray">
-                    Leave empty to auto-detect based on your OS.
+                    Оставьте пустым для автоопределения по ОС.
                   </Text>
                 </Flex>
               )}
@@ -186,9 +186,9 @@ export default function LocalTerminalSettingsDialog({
         </form>
         <Flex gap="3" justify="end" mt="4">
           <Button variant="outline" onClick={onCancel}>
-            Cancel
+            Отмена
           </Button>
-          <Button onClick={onSubmit}>Save</Button>
+          <Button onClick={onSubmit}>Сохранить</Button>
         </Flex>
       </Dialog.Content>
     </Dialog.Root>

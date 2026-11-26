@@ -49,17 +49,17 @@ type TransferProgressProps = {
 const activeStatuses: QueueItemStatus[] = ["transferring", "waiting", "paused"];
 
 const statusLabels: Record<QueueItemStatus, string> = {
-  waiting: "Waiting",
-  transferring: "Transferring",
-  paused: "Paused",
-  completed: "Completed",
-  failed: "Failed",
-  cancelled: "Cancelled",
+  waiting: "Ожидание",
+  transferring: "Передача",
+  paused: "Приостановлено",
+  completed: "Завершено",
+  failed: "Ошибка",
+  cancelled: "Отменено",
 };
 
 function formatEtaLabel(seconds: number) {
   const value = formatEta(seconds);
-  return value === "--" ? "--" : `${value} left`;
+  return value === "--" ? "--" : `Осталось ${value}`;
 }
 
 export function TransferProgress({
@@ -92,39 +92,39 @@ export function TransferProgress({
     <div className={styles.panel}>
       <div className={styles.titleRow}>
         <div className={styles.titleMain}>
-          <span className={styles.direction}>Transfers</span>
+          <span className={styles.direction}>Передачи</span>
           <span className={styles.stats}>
-            <span className={styles.stat} title="Uploading">
+            <span className={styles.stat} title="Отправка">
               <span className={styles.uploadIcon}>
                 <StatusUploadIcon />
               </span>
               {uploadingCount}
             </span>
-            <span className={styles.stat} title="Downloading">
+            <span className={styles.stat} title="Загрузка">
               <span className={styles.downloadIcon}>
                 <StatusDownloadIcon />
               </span>
               {downloadingCount}
             </span>
-            <span className={styles.stat} title="Paused">
+            <span className={styles.stat} title="Приостановлено">
               <span className={styles.pauseIcon}>
                 <PauseIcon />
               </span>
               {pausedCount}
             </span>
-            <span className={styles.stat} title="Waiting">
+            <span className={styles.stat} title="Ожидание">
               <span className={styles.waitingIcon}>
                 <StatusWaitingIcon />
               </span>
               {waitingCount}
             </span>
-            <span className={styles.stat} title="Completed">
+            <span className={styles.stat} title="Завершено">
               <span className={styles.doneIcon}>
                 <StatusCompleteIcon />
               </span>
               {completedCount}
             </span>
-            <span className={styles.stat} title="Failed">
+            <span className={styles.stat} title="Ошибка">
               <span className={styles.failedIcon}>
                 <StatusFailedIcon />
               </span>
@@ -139,7 +139,7 @@ export function TransferProgress({
               variant="ghost"
               size="1"
               onClick={onCollapse}
-              title="Collapse"
+              title="Свернуть"
             >
               <WindowMinimizeIcon />
             </IconButton>
@@ -149,9 +149,9 @@ export function TransferProgress({
       <div className={styles.fileList}>
         {!hasRecords && (
           <div className={styles.emptyState}>
-            <span className={styles.emptyTitle}>No transfers yet</span>
+            <span className={styles.emptyTitle}>Передач пока нет</span>
             <span className={styles.emptyDescription}>
-              Upload or download files to track progress here.
+              Отправьте или загрузите файлы, чтобы отслеживать прогресс.
             </span>
           </div>
         )}
@@ -174,7 +174,7 @@ export function TransferProgress({
                 return `${pct}% · ${formatBytes(item.progress)} / ${formatBytes(item.total)}`;
               }
               if (item.status === "failed") {
-                return item.error ? item.error.slice(0, 56) : "failed";
+                return item.error ? item.error.slice(0, 56) : "ошибка";
               }
               return statusLabels[item.status].toLowerCase();
             })();
@@ -206,8 +206,8 @@ export function TransferProgress({
                       variant="ghost"
                       size="1"
                       onClick={() => onPauseItem(item.id)}
-                      aria-label="Pause"
-                      title="Pause"
+                      aria-label="Приостановить"
+                      title="Приостановить"
                     >
                       <PauseIcon />
                     </IconButton>
@@ -218,8 +218,8 @@ export function TransferProgress({
                       variant="ghost"
                       size="1"
                       onClick={() => onResumeItem(item.id)}
-                      aria-label="Resume"
-                      title="Resume"
+                      aria-label="Возобновить"
+                      title="Возобновить"
                     >
                       <PlayIcon />
                     </IconButton>
@@ -230,8 +230,8 @@ export function TransferProgress({
                       variant="ghost"
                       size="1"
                       onClick={() => onCancelItem(item.id)}
-                      aria-label="Cancel transfer"
-                      title="Cancel transfer"
+                      aria-label="Отменить передачу"
+                      title="Отменить передачу"
                     >
                       <CloseIcon />
                     </IconButton>
@@ -242,8 +242,8 @@ export function TransferProgress({
                       variant="ghost"
                       size="1"
                       onClick={() => onRemoveItem(item.id)}
-                      aria-label="Remove record"
-                      title="Remove record"
+                      aria-label="Удалить запись"
+                      title="Удалить запись"
                     >
                       <DeleteIcon />
                     </IconButton>

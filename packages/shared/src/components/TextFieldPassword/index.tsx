@@ -91,7 +91,7 @@ export const TextFieldPassword = forwardRef(function TextFieldPassword(
             color="gray"
             size="1"
             onClick={onVisibilityChange}
-            aria-label={isVisible ? "Hide password" : "Show password"}
+            aria-label={isVisible ? "Скрыть пароль" : "Показать пароль"}
           >
             {isVisible ? (
               <VisibilityOffIcon aria-hidden="true" />

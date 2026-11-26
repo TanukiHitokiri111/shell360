@@ -12,8 +12,8 @@ type DrawerFooterProps = {
 
 export default function DrawerFooter({
   loading,
-  cancelLabel = "Cancel",
-  submitLabel = "Save",
+  cancelLabel = "Отмена",
+  submitLabel = "Сохранить",
   extra,
   onCancel,
   onSubmit,

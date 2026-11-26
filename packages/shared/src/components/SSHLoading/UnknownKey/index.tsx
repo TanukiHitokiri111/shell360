@@ -15,20 +15,20 @@ export default function UnknownKey({
   return (
     <>
       <ErrorText
-        title="Are you sure you want to continue?"
+        title="Вы уверены, что хотите продолжить?"
         message={get(error, "message", String(error))}
       />
 
       <div className={styles.actions}>
         <StatusButton variant="outlined" onClick={onClose}>
-          Close
+          Закрыть
         </StatusButton>
         <div className={styles.splitButtonGroup}>
           <Button
             className={styles.splitPrimaryButton}
             onClick={() => onReConnect(SSHSessionCheckServerKey.Continue)}
           >
-            Continue
+            Продолжить
           </Button>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
@@ -42,7 +42,7 @@ export default function UnknownKey({
                   onReConnect(SSHSessionCheckServerKey.AddAndContinue)
                 }
               >
-                Add and continue
+                Добавить и продолжить
               </DropdownMenu.Item>
             </DropdownMenu.Content>
           </DropdownMenu.Root>

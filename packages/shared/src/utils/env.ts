@@ -30,12 +30,12 @@ export function validateEnvs(value: string | undefined): true | string {
   for (const entry of value.split(",")) {
     const eqIdx = entry.indexOf("=");
     if (eqIdx === -1) {
-      return "Invalid environment variable format";
+      return "Неверный формат переменной окружения";
     }
     const key = entry.slice(0, eqIdx).trim();
     const envValue = entry.slice(eqIdx + 1).trim();
     if (!key || !envValue) {
-      return "Invalid environment variable format";
+      return "Неверный формат переменной окружения";
     }
   }
   return true;

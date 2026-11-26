@@ -84,7 +84,7 @@ export default function QuickSearch({ open, onClose }: QuickSearchProps) {
       if (!matches(q, page.label)) continue;
       result.push({
         key: `page:${page.path}`,
-        section: "Pages",
+        section: "Страницы",
         label: page.label,
         icon: <page.Icon />,
         onSelect: () => {
@@ -99,7 +99,7 @@ export default function QuickSearch({ open, onClose }: QuickSearchProps) {
       if (!matches(q, name, host.hostname, host.username)) continue;
       result.push({
         key: `host:${host.id}`,
-        section: "Hosts",
+        section: "Хосты",
         label: name,
         description: getHostDesc(host),
         icon: <HostIcon />,
@@ -115,9 +115,9 @@ export default function QuickSearch({ open, onClose }: QuickSearchProps) {
       if (!matches(q, terminal.name)) continue;
       result.push({
         key: `session:${terminal.uuid}`,
-        section: "Active Sessions",
+        section: "Активные сеансы",
         label: terminal.name,
-        description: terminal.type === "sftp" ? "SFTP" : "Terminal",
+        description: terminal.type === "sftp" ? "SFTP" : "Терминал",
         icon: terminal.type === "sftp" ? <FolderIcon /> : <TerminalIcon />,
         onSelect: () => {
           activateTerminal(terminal.uuid);
@@ -214,7 +214,7 @@ export default function QuickSearch({ open, onClose }: QuickSearchProps) {
             className={clsx(styles.panel, closing && styles.closingPanel)}
             role="dialog"
             aria-modal="true"
-            aria-label="Quick search"
+            aria-label="Быстрый поиск"
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.inputWrap}>
@@ -225,7 +225,7 @@ export default function QuickSearch({ open, onClose }: QuickSearchProps) {
                 ref={inputRef}
                 className={styles.input}
                 type="text"
-                placeholder="Search hosts, pages, sessions..."
+                placeholder="Поиск хостов, страниц и сеансов..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 spellCheck={false}
@@ -271,7 +271,7 @@ export default function QuickSearch({ open, onClose }: QuickSearchProps) {
               </div>
             ) : (
               <div className={styles.empty}>
-                {query ? "No results found" : "Start typing to search..."}
+                {query ? "Ничего не найдено" : "Начните вводить запрос..."}
               </div>
             )}
           </div>

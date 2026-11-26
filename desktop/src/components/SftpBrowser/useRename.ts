@@ -32,7 +32,7 @@ export default function useRename({
 
       const isExists = await sftpRef.current?.sftpExists(newPath);
       if (isExists) {
-        throw new Error(`The path "${newPath}" already exists`);
+        throw new Error(`Путь "${newPath}" уже существует`);
       }
 
       await sftpRef.current?.sftpRename({
@@ -44,13 +44,13 @@ export default function useRename({
       manual: true,
       onSuccess: (_, [, newPath]) => {
         message.success({
-          message: `Renamed to "${getSftpBasename(newPath)}"`,
+          message: `Переименовано в "${getSftpBasename(newPath)}"`,
         });
         refreshDir();
       },
       onError: (err) =>
         message.error({
-          message: `Failed to rename: ${getErrorMessage(err)}`,
+          message: `Не удалось переименовать: ${getErrorMessage(err)}`,
         }),
     },
   );

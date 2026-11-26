@@ -8,17 +8,17 @@ import type { PortForwardingRuntime } from "./usePortForwardingRuntime";
 
 const PORT_FORWARDING_STATUS = {
   pending: {
-    label: "Connecting",
+    label: "Подключение",
     textClassName: styles.statusPending,
     dotClassName: "active",
   },
   failed: {
-    label: "Failed",
+    label: "Ошибка",
     textClassName: styles.statusFailed,
     dotClassName: "failed",
   },
   success: {
-    label: "Running",
+    label: "Работает",
     textClassName: styles.statusRunning,
     dotClassName: "active",
   },
@@ -46,7 +46,7 @@ export default function PortForwardingItem({
   const statusMeta = runtime.status
     ? PORT_FORWARDING_STATUS[runtime.status]
     : {
-        label: "Stopped",
+        label: "Остановлен",
         textClassName: styles.statusStopped,
         dotClassName: "idle",
       };

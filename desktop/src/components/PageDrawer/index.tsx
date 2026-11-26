@@ -93,7 +93,7 @@ export default function PageDrawer({
                   type="button"
                   variant="ghost"
                   color="gray"
-                  aria-label="Close"
+                  aria-label="Закрыть"
                   onClick={handleCancel}
                 >
                   <ArrowRightIcon />

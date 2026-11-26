@@ -77,7 +77,7 @@ export default function AddKey({ open, data, onOk, onCancel }: AddKeyProps) {
         onOk();
       } catch (err) {
         message.error({
-          message: get(err, "message") || "Failed to save key",
+          message: get(err, "message") || "Не удалось сохранить ключ",
         });
       } finally {
         setSaving(false);
@@ -95,12 +95,12 @@ export default function AddKey({ open, data, onOk, onCancel }: AddKeyProps) {
     <PageDrawer
       loading={saving}
       open={open}
-      title={data ? "Edit key" : "Add key"}
+      title={data ? "Изменить ключ" : "Добавить ключ"}
       onCancel={onCancel}
       footer={
         <DrawerFooter
           loading={saving}
-          submitLabel={data ? "Save" : "Add"}
+          submitLabel={data ? "Сохранить" : "Добавить"}
           onCancel={onCancel}
           onSubmit={formApi.handleSubmit(onSave)}
         />

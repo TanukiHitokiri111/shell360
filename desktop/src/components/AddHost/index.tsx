@@ -150,7 +150,7 @@ export default function AddHost({ open, data, onOk, onCancel }: AddHostProps) {
         onOk();
       } catch (error) {
         msg.error({
-          message: `Failed to save and connect: ${error instanceof Error ? error.message : error}`,
+          message: `Не удалось сохранить и подключиться: ${error instanceof Error ? error.message : error}`,
         });
       }
     },
@@ -165,7 +165,7 @@ export default function AddHost({ open, data, onOk, onCancel }: AddHostProps) {
         onOk();
       } catch (error) {
         msg.error({
-          message: `Failed to save host: ${error instanceof Error ? error.message : error}`,
+          message: `Не удалось сохранить хост: ${error instanceof Error ? error.message : error}`,
         });
       }
     },
@@ -174,7 +174,7 @@ export default function AddHost({ open, data, onOk, onCancel }: AddHostProps) {
 
   const onValidationError = useCallback(
     (errors: FieldErrors<EditHostFormFields>) => {
-      let errorMessage = "Please fill in the required fields";
+      let errorMessage = "Заполните обязательные поля";
       for (const err of Object.values(errors)) {
         if (!err) continue;
         if (typeof err.message === "string") {
@@ -199,8 +199,8 @@ export default function AddHost({ open, data, onOk, onCancel }: AddHostProps) {
   const menus = useMemo(
     () => [
       {
-        value: "Save & Connect",
-        label: "Save & Connect",
+        value: "Сохранить и подключиться",
+        label: "Сохранить и подключиться",
         onClick: formApi.handleSubmit(onSaveAndConnect, onValidationError),
       },
     ],
@@ -219,7 +219,7 @@ export default function AddHost({ open, data, onOk, onCancel }: AddHostProps) {
     <>
       <PageDrawer
         open={open}
-        title={data ? "Edit host" : "Add host"}
+        title={data ? "Изменить хост" : "Добавить хост"}
         onCancel={onCancel}
         footer={
           <DrawerFooter

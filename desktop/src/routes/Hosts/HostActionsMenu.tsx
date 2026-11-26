@@ -30,15 +30,15 @@ export default function HostActionsMenu({
       <DropdownMenu.Content side="bottom" align="end" sideOffset={4}>
         <DropdownMenu.Item onSelect={() => onEdit(host)}>
           <EditIcon style={{ marginRight: 8 }} />
-          Edit
+          Изменить
         </DropdownMenu.Item>
         <DropdownMenu.Item onSelect={() => onCopy(host)}>
           <ContentCopyIcon style={{ marginRight: 8 }} />
-          Copy
+          Копировать
         </DropdownMenu.Item>
         <DropdownMenu.Item onSelect={() => onDelete(host)}>
           <DeleteIcon style={{ marginRight: 8 }} />
-          Delete
+          Удалить
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>

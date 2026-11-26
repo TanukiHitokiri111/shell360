@@ -58,7 +58,7 @@ export default function GenerateKey({
         onOk();
       } catch (err) {
         message.error({
-          message: get(err, "message") || "Failed to generate key",
+          message: get(err, "message") || "Не удалось создать ключ",
         });
       } finally {
         setLoading(false);
@@ -76,7 +76,7 @@ export default function GenerateKey({
     <PageDrawer
       loading={loading}
       open={open}
-      title="Generate key"
+      title="Создать ключ"
       onCancel={onCancel}
       footer={
         <Flex gap="3">
@@ -86,7 +86,7 @@ export default function GenerateKey({
             loading={loading}
             onClick={onCancel}
           >
-            Cancel
+            Отмена
           </Button>
 
           <Button
@@ -94,7 +94,7 @@ export default function GenerateKey({
             loading={loading}
             onClick={formApi.handleSubmit(onGenerate)}
           >
-            Generate
+            Создать
           </Button>
         </Flex>
       }

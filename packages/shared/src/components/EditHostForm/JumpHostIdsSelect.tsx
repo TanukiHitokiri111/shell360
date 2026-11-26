@@ -105,7 +105,7 @@ export default function JumpHostIdsSelect({
                     as="div"
                     size="1"
                     color="gray"
-                  >{`Jump host #${index + 1}`}</Text>
+                  >{`Промежуточный хост №${index + 1}`}</Text>
                 </div>
                 <div className={styles.itemActions}>
                   <IconButton
@@ -152,7 +152,7 @@ export default function JumpHostIdsSelect({
             weight="medium"
             className={styles.fieldLabel}
           >
-            Select jump host
+            Выберите промежуточный хост
           </Text>
           <Select.Root
             value={selectedHostId}
@@ -161,7 +161,7 @@ export default function JumpHostIdsSelect({
           >
             <Select.Trigger
               style={{ width: "100%" }}
-              placeholder="Select jump host"
+              placeholder="Выберите промежуточный хост"
             />
             <Select.Content>
               {availableHosts.map((host) => (
@@ -184,7 +184,7 @@ export default function JumpHostIdsSelect({
           onClick={handleAdd}
         >
           <AddIcon />
-          Add
+          Добавить
         </Button>
       </div>
     </div>

@@ -63,7 +63,7 @@ export default function StatusBar({ task, onExpand }: StatusBarProps) {
   const speedLabel = formatSpeed(speed);
   const etaLabel = formatEta(eta);
   const summaryTitle = `${progressPercent}% · ${speedLabel} · ${
-    etaLabel === "--" ? "ETA --" : `${etaLabel} left`
+    etaLabel === "--" ? "ETA --" : `осталось ${etaLabel}`
   }`;
 
   return (

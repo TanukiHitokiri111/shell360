@@ -69,11 +69,15 @@ const APPEARANCE_OPTIONS: Array<{
 }> = [
   {
     value: "inherit",
-    label: "Follow system",
-    hint: "Match the device theme automatically.",
+    label: "Как в системе",
+    hint: "Автоматически использовать системную тему.",
   },
-  { value: "light", label: "Light", hint: "Keep surfaces bright and clear." },
-  { value: "dark", label: "Dark", hint: "Reduce glare for long sessions." },
+  { value: "light", label: "Светлая", hint: "Светлое оформление." },
+  {
+    value: "dark",
+    label: "Тёмная",
+    hint: "Тёмное оформление для длительной работы.",
+  },
 ];
 
 function SectionHeader({
@@ -214,11 +218,11 @@ export default function Settings() {
         return;
       }
       message.success({
-        message: "Export file successful",
+        message: "Данные успешно экспортированы",
       });
     } catch (err) {
       message.error({
-        message: `Export failed: ${String(err)}`,
+        message: `Ошибка экспорта: ${String(err)}`,
       });
     }
   }, [exportData, message]);
@@ -226,16 +230,16 @@ export default function Settings() {
   const onImportData = useCallback(async () => {
     try {
       const result = await modal.confirm({
-        title: "Warning",
+        title: "Предупреждение",
         icon: (
           <WarningCircleIcon
             style={{ fontSize: 32, color: "var(--orange-9)" }}
           />
         ),
         content:
-          "The import file will overwrite the same configuration, which may cause data loss. Please proceed with caution.",
-        okText: "Import",
-        cancelText: "Cancel",
+          "Импорт перезапишет совпадающие настройки, что может привести к потере данных. Продолжайте с осторожностью.",
+        okText: "Импорт",
+        cancelText: "Отмена",
       });
       if (!result) {
         return;
@@ -250,11 +254,11 @@ export default function Settings() {
         return;
       }
       message.success({
-        message: "Import file successful",
+        message: "Данные успешно импортированы",
       });
     } catch (err) {
       message.error({
-        message: `Import failed: ${String(err)}`,
+        message: `Ошибка импорта: ${String(err)}`,
       });
     }
   }, [modal, importData, message]);
@@ -264,12 +268,12 @@ export default function Settings() {
       <Flex className={styles.header} align="start" justify="between" gap="6">
         <Flex className={styles.headerMain} direction="column" gap="2">
           <Text size="1" color="gray" className={styles.eyebrow}>
-            Application
+            Приложение
           </Text>
-          <Heading size="6">Settings</Heading>
+          <Heading size="6">Настройки</Heading>
           <Text size="2" color="gray">
-            Adjust appearance, terminal, security, and update behavior for the
-            desktop workspace.
+            Настройте оформление, терминал, безопасность и обновления
+            приложения.
           </Text>
         </Flex>
         <Flex className={styles.headerActions}>
@@ -283,8 +287,8 @@ export default function Settings() {
               checkingError
                 ? checkingError
                 : hasUpdate
-                  ? "Update available"
-                  : "Check for updates"
+                  ? "Доступно обновление"
+                  : "Проверить обновления"
             }
           >
             <Text as="span" className={styles.versionPillLabel}>
@@ -295,7 +299,7 @@ export default function Settings() {
             ) : hasUpdate ? (
               <span className={styles.versionPillStatus}>
                 <UpgradeIcon />
-                Update
+                Обновить
               </span>
             ) : checking ? (
               <Spinner className={styles.versionPillStatus} />
@@ -308,9 +312,9 @@ export default function Settings() {
       <div className={styles.pageBody}>
         <div className={styles.layout}>
           <Section
-            eyebrow="Appearance"
-            title="Visual"
-            description="Choose how the desktop app should look."
+            eyebrow="Внешний вид"
+            title="Оформление"
+            description="Выберите оформление приложения."
           >
             <RadioCards.Root
               columns={{ initial: "1", sm: "3" }}
@@ -333,30 +337,30 @@ export default function Settings() {
           </Section>
 
           <Section
-            eyebrow="Terminal"
-            title="Local"
-            description="Configure the built-in local terminal font, theme, and shell."
+            eyebrow="Терминал"
+            title="Локальный"
+            description="Настройте шрифт, тему и оболочку встроенного терминала."
           >
             <ActionRow
               icon={<TerminalIcon />}
-              title="Local terminal settings"
-              description={`${localSettings.fontFamily}, ${localSettings.fontSize}px, ${localSettings.theme}${localSettings.shell ? ` — Shell: ${localSettings.shell}` : ""}`}
+              title="Настройки локального терминала"
+              description={`${localSettings.fontFamily}, ${localSettings.fontSize}px, ${localSettings.theme}${localSettings.shell ? ` — Оболочка: ${localSettings.shell}` : ""}`}
               cta={{
-                label: "Configure",
+                label: "Настроить",
                 onClick: () => setTerminalSettingsOpen(true),
               }}
             />
           </Section>
 
           <Section
-            eyebrow="Security"
-            title="Data protection"
-            description="Manage local encryption and trusted hosts."
+            eyebrow="Безопасность"
+            title="Защита данных"
+            description="Управление локальным шифрованием и доверенными хостами."
           >
             <ActionRow
               icon={<KeyIcon />}
-              title="Local encryption"
-              description="Protect saved application data on this device."
+              title="Локальное шифрование"
+              description="Защитите сохранённые данные приложения на этом устройстве."
               value={
                 <Switch
                   checked={cryptoEnable}
@@ -369,10 +373,10 @@ export default function Settings() {
                 <div className={styles.actionDivider} />
                 <ActionRow
                   icon={<KeyIcon />}
-                  title="Change encryption password"
-                  description="Update the password for encrypted local data."
+                  title="Изменить пароль шифрования"
+                  description="Измените пароль зашифрованных локальных данных."
                   cta={{
-                    label: "Change",
+                    label: "Изменить",
                     onClick: () => setChangeCryptoPasswordIsOpen(true),
                   }}
                 />
@@ -381,52 +385,52 @@ export default function Settings() {
           </Section>
 
           <Section
-            eyebrow="Data"
-            title="Import and export"
-            description="Transfer your configuration data between devices."
+            eyebrow="Данные"
+            title="Импорт и экспорт"
+            description="Перенос настроек между устройствами."
           >
             <ActionRow
               icon={<FileDownloadIcon />}
-              title="Export data"
-              description="Save all hosts, keys, and port forwardings to a file."
+              title="Экспорт данных"
+              description="Сохранить хосты, ключи и перенаправления портов в файл."
               cta={{
-                label: "Export",
+                label: "Экспорт",
                 onClick: onExportData,
               }}
             />
             <div className={styles.actionDivider} />
             <ActionRow
               icon={<FileUploadIcon />}
-              title="Import data"
-              description="Load hosts, keys, and port forwardings from a file."
+              title="Импорт данных"
+              description="Загрузить хосты, ключи и перенаправления портов из файла."
               cta={{
-                label: "Import",
+                label: "Импорт",
                 onClick: onImportData,
               }}
             />
           </Section>
 
           <Section
-            eyebrow="Application"
-            title="About"
-            description="Project resources and links."
+            eyebrow="Приложение"
+            title="О приложении"
+            description="Ресурсы и ссылки проекта."
           >
             <ActionRow
               icon={<HostIcon />}
-              title="Project repository"
-              description="Open the GitHub repository."
+              title="Репозиторий проекта"
+              description="Открыть репозиторий на GitHub."
               cta={{
-                label: "Open",
+                label: "Открыть",
                 onClick: () => openUrl("https://github.com/nashaofu/shell360"),
               }}
             />
             <div className={styles.actionDivider} />
             <ActionRow
               icon={<FileIcon />}
-              title="Documentation"
-              description="Open the project README."
+              title="Документация"
+              description="Открыть README проекта."
               cta={{
-                label: "Read",
+                label: "Читать",
                 onClick: () =>
                   openUrl(
                     "https://github.com/nashaofu/shell360/blob/master/README.md",

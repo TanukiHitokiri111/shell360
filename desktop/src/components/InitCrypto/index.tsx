@@ -39,13 +39,13 @@ export default function InitCrypto({ open, onCancel, onOk }: InitCryptoProps) {
         manual: true,
         onSuccess: () => {
           message.success({
-            message: "Encryption enabled successfully",
+            message: "Шифрование включено",
           });
           onOk();
         },
         onError: () => {
           message.error({
-            message: "Failed to enable encryption",
+            message: "Не удалось включить шифрование",
           });
         },
       },
@@ -56,40 +56,39 @@ export default function InitCrypto({ open, onCancel, onOk }: InitCryptoProps) {
   return (
     <Dialog.Root open={open}>
       <Dialog.Content style={{ maxWidth: 420 }}>
-        <Dialog.Title>Initialize Encryption</Dialog.Title>
+        <Dialog.Title>Включение шифрования</Dialog.Title>
         <Loading loading={loading} size={32}>
           <Dialog.Description size="2" color="gray">
-            Set a password to encrypt and protect your application data. Keep it
-            safe — it cannot be recovered if lost.
+            Установите пароль для шифрования данных приложения. Сохраните его в надёжном месте: восстановить утраченный пароль невозможно.
           </Dialog.Description>
           <form noValidate autoComplete="off">
             <Flex direction="column" gap="4" mt="4">
               <CryptoPasswordField
                 control={formApi.control}
                 name="password"
-                label="Password"
-                placeholder="Password"
-                requiredMessage="Please enter password"
+                label="Пароль"
+                placeholder="Пароль"
+                requiredMessage="Введите пароль"
               />
               <CryptoPasswordField
                 control={formApi.control}
                 name="confirmPassword"
-                label="Confirm Password"
-                placeholder="Confirm password"
-                requiredMessage="Please enter confirm password"
+                label="Подтверждение пароля"
+                placeholder="Подтвердите пароль"
+                requiredMessage="Подтвердите пароль"
                 matchField="password"
               />
             </Flex>
           </form>
           <Flex gap="3" justify="end" mt="4">
             <Button variant="outline" disabled={loading} onClick={onCancel}>
-              Cancel
+              Отмена
             </Button>
             <Button
               loading={loading}
               onClick={formApi.handleSubmit(onInitCryptoPassword)}
             >
-              Submit
+              Подтвердить
             </Button>
           </Flex>
         </Loading>

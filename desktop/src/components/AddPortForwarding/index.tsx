@@ -99,7 +99,7 @@ export default function AddPortForwarding({
   return (
     <PageDrawer
       open={open}
-      title={data ? "Edit tunnel" : "Add tunnel"}
+      title={data ? "Изменить туннель" : "Добавить туннель"}
       onCancel={onCancel}
       footer={
         <DrawerFooter

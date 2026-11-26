@@ -59,10 +59,10 @@ export default function PortForwardings() {
     <>
       <div className={styles.page}>
         <ListToolbar
-          title="Tunnels"
+          title="Туннели"
           keyword={keyword}
           onKeywordChange={setKeyword}
-          searchPlaceholder="Filter tunnels..."
+          searchPlaceholder="Поиск туннелей..."
           viewMode={viewMode}
           onViewModeChange={setViewMode}
         >
@@ -73,7 +73,7 @@ export default function PortForwardings() {
             onClick={() => setIsOpenAddPortForwarding(true)}
           >
             <AddIcon width="11" height="11" />
-            New Tunnel
+            Новый туннель
           </Button>
         </ListToolbar>
         <div className={styles.content}>
@@ -82,14 +82,14 @@ export default function PortForwardings() {
               <thead>
                 <tr>
                   <th style={{ width: 36 }} />
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Local Address</th>
-                  <th>Local Port</th>
-                  <th>Remote Address</th>
-                  <th>Remote Port</th>
-                  <th>Host</th>
-                  <th>Status</th>
+                  <th>Название</th>
+                  <th>Тип</th>
+                  <th>Локальный адрес</th>
+                  <th>Локальный порт</th>
+                  <th>Удалённый адрес</th>
+                  <th>Удалённый порт</th>
+                  <th>Хост</th>
+                  <th>Состояние</th>
                   <th />
                 </tr>
               </thead>
@@ -122,14 +122,14 @@ export default function PortForwardings() {
               ))}
             </div>
           ) : (
-            <Empty desc="There is no tunnel yet, add it now.">
+            <Empty desc="Туннелей пока нет. Добавьте туннель.">
               <Button
                 type="button"
                 variant="soft"
                 className={styles.toolbarPrimaryButton}
                 onClick={() => setIsOpenAddPortForwarding(true)}
               >
-                New Tunnel
+                Новый туннель
               </Button>
             </Empty>
           )}

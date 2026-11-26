@@ -20,7 +20,7 @@ export default function JumpHostsForm({ formApi, sx }: JumpHostsFormProps) {
     <section className={styles.section} style={wrapperStyle}>
       <div className={styles.sectionTitleWrap}>
         <Text size="3" weight="medium">
-          Jump Hosts
+          Промежуточные хосты
         </Text>
       </div>
       <Controller
@@ -34,10 +34,10 @@ export default function JumpHostsForm({ formApi, sx }: JumpHostsFormProps) {
               onValueChange={(v) => field.onChange(v === "true")}
             >
               <SegmentedControl.Item value="false">
-                Disabled
+                Отключено
               </SegmentedControl.Item>
               <SegmentedControl.Item value="true">
-                Enabled
+                Включено
               </SegmentedControl.Item>
             </SegmentedControl.Root>
           );
@@ -51,7 +51,7 @@ export default function JumpHostsForm({ formApi, sx }: JumpHostsFormProps) {
           rules={{
             validate: (value) => {
               if (value?.length === 0) {
-                return "Please select at least one jump host";
+                return "Выберите хотя бы один промежуточный хост";
               }
               return true;
             },

@@ -65,15 +65,15 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please enter name",
+            message: "Введите название",
           },
           minLength: {
             value: 1,
-            message: "Please enter at least 1 characters",
+            message: "Введите не менее 1 символа",
           },
           maxLength: {
             value: 60,
-            message: "Please enter no more than 60 characters",
+            message: "Введите не более 60 символов",
           },
         }}
         defaultValue=""
@@ -85,11 +85,11 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Name
+              Название
             </Text>
             <TextField.Root
               value={field.value || ""}
-              placeholder="Name"
+              placeholder="Название"
               onChange={onInputChange(field.onChange)}
             />
             {fieldState.invalid && (
@@ -106,7 +106,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
         rules={{
           required: {
             value: true,
-            message: "Please select algorithm",
+            message: "Выберите алгоритм",
           },
         }}
         render={({ field, fieldState }) => (
@@ -117,7 +117,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
               weight="medium"
               className={styles.fieldLabel}
             >
-              Algorithm
+              Алгоритм
             </Text>
             <Select.Root
               value={field.value || ""}
@@ -125,7 +125,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
             >
               <Select.Trigger
                 style={{ width: "100%" }}
-                placeholder="Select algorithm"
+                placeholder="Выберите алгоритм"
               />
               <Select.Content>
                 {ALGORITHM_MENUS.map((item) => (
@@ -150,7 +150,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
           rules={{
             required: {
               value: true,
-              message: "Please select bit size",
+              message: "Выберите длину ключа",
             },
           }}
           render={({ field, fieldState }) => (
@@ -161,7 +161,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Bit size
+                Длина ключа
               </Text>
               <Select.Root
                 value={field.value ? String(field.value) : ""}
@@ -169,7 +169,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
               >
                 <Select.Trigger
                   style={{ width: "100%" }}
-                  placeholder="Select bit size"
+                  placeholder="Выберите длину ключа"
                 />
                 <Select.Content>
                   {RSA_BIT_SIZE.map((item) => (
@@ -195,7 +195,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
           rules={{
             required: {
               value: true,
-              message: "Please select curve",
+              message: "Выберите кривую",
             },
           }}
           render={({ field, fieldState }) => (
@@ -206,7 +206,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
                 weight="medium"
                 className={styles.fieldLabel}
               >
-                Curve
+                Кривая
               </Text>
               <Select.Root
                 value={field.value || ""}
@@ -214,7 +214,7 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
               >
                 <Select.Trigger
                   style={{ width: "100%" }}
-                  placeholder="Select curve"
+                  placeholder="Выберите кривую"
                 />
                 <Select.Content>
                   {ECDSA_CURVE.map((item) => (
@@ -243,8 +243,8 @@ export function GenerateKeyForm({ formApi }: GenerateKeyFormProps) {
               sx={undefined}
               className={styles.formFieldInput}
               fullWidth
-              label="Passphrase"
-              placeholder="Passphrase"
+              label="Кодовая фраза"
+              placeholder="Кодовая фраза"
               error={fieldState.invalid}
               helperText={fieldState.error?.message}
             />

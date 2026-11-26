@@ -197,7 +197,7 @@ export default function Workspace() {
         className={styles.dockview}
         watermarkComponent={() => (
           <div className={styles.watermark}>
-            <span>No terminals open</span>
+            <span>Нет открытых терминалов</span>
           </div>
         )}
         disableFloatingGroups

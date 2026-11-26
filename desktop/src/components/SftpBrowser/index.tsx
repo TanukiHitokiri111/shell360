@@ -103,7 +103,7 @@ export default function SftpBrowser({
       },
       onError: (err) =>
         message.error({
-          message: `Failed to load folder: ${getErrorMessage(err)}`,
+          message: `Не удалось загрузить папку: ${getErrorMessage(err)}`,
         }),
     },
   );
@@ -244,7 +244,7 @@ export default function SftpBrowser({
       try {
         const exists = await sftpRef.current.sftpExists(path);
         if (!exists) {
-          message.error({ message: `Folder not found: ${path}` });
+          message.error({ message: `Папка не найдена: ${path}` });
           return false;
         }
         await sftpRef.current.sftpReadDir(path);
@@ -252,7 +252,7 @@ export default function SftpBrowser({
         return true;
       } catch (err) {
         message.error({
-          message: `Failed to open folder "${path}": ${getErrorMessage(err)}`,
+          message: `Не удалось открыть папку "${path}": ${getErrorMessage(err)}`,
         });
         return false;
       }
@@ -307,22 +307,22 @@ export default function SftpBrowser({
   const actions = useMemo(() => {
     return [
       {
-        label: "New File",
+        label: "Новый файл",
         value: "New File",
         onClick: () => onCreate(CreateType.File, "New File"),
       },
       {
-        label: "New Folder",
+        label: "Новая папка",
         value: "New Folder",
         onClick: () => onCreate(CreateType.Dir, "New Folder"),
       },
       {
-        label: "Refresh",
+        label: "Обновить",
         value: "Refresh",
         onClick: () => safeRefreshDir("manual"),
       },
       {
-        label: isShowHiddenFiles ? "Hide Hidden Files" : "Show Hidden Files",
+        label: isShowHiddenFiles ? "Скрыть скрытые файлы" : "Показать скрытые файлы",
         value: "Toggle Hidden Files",
         onClick: () => setIsShowHiddenFiles(!isShowHiddenFiles),
       },

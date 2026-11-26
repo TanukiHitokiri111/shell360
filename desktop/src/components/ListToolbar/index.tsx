@@ -46,7 +46,7 @@ export default function ListToolbar({
               styles.toggleButton,
               viewMode === "grid" && styles.toggleButtonActive,
             )}
-            title="Grid view"
+            title="Плитка"
             onClick={() => onViewModeChange("grid")}
           >
             <GridIcon width="12" height="12" />
@@ -57,7 +57,7 @@ export default function ListToolbar({
               styles.toggleButton,
               viewMode === "list" && styles.toggleButtonActive,
             )}
-            title="List view"
+            title="Список"
             onClick={() => onViewModeChange("list")}
           >
             <ListIcon width="12" height="12" />

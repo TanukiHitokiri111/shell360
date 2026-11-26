@@ -76,7 +76,7 @@ export default function SftpFilenameInput({
         <button
           type="button"
           className={styles.confirmButton}
-          title="Confirm"
+          title="Подтвердить"
           disabled={!canConfirm}
           onClick={() => onOk()}
         >
@@ -85,7 +85,7 @@ export default function SftpFilenameInput({
         <button
           type="button"
           className={styles.cancelButton}
-          title="Cancel"
+          title="Отмена"
           onClick={() => onCancel()}
         >
           <CloseIcon />

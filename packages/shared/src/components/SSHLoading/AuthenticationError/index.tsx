@@ -105,15 +105,14 @@ export default function AuthenticationError({
             message
           ) : (
             <>
-              The <b>{kind}</b> authentication method is not supported. The
-              server only supports the <b>{methodSet.join(", ")}</b>{" "}
-              authentication method.
+              Способ аутентификации <b>{kind}</b> не поддерживается. Сервер
+              поддерживает только: <b>{methodSet.join(", ")}</b>.
             </>
           ),
       };
     }
     return {
-      title: "Authentication failed",
+      title: "Ошибка аутентификации",
       message: message,
     };
   }, [error]);
@@ -162,7 +161,7 @@ export default function AuthenticationError({
       <AuthenticationForm formApi={formApi} onOpenAddKey={onOpenAddKey} />
       <div className={styles.actions}>
         <StatusButton variant="outlined" onClick={onClose}>
-          Close
+          Закрыть
         </StatusButton>
         <div className={styles.splitButtonGroup}>
           <Button
@@ -172,7 +171,7 @@ export default function AuthenticationError({
               onContinue(values, false),
             )}
           >
-            Continue
+            Продолжить
           </Button>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
@@ -186,7 +185,7 @@ export default function AuthenticationError({
                   formApi.handleSubmit((values) => onContinue(values, true))();
                 }}
               >
-                Save and continue
+                Сохранить и продолжить
               </DropdownMenu.Item>
             </DropdownMenu.Content>
           </DropdownMenu.Root>

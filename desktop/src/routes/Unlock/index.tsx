@@ -18,7 +18,7 @@ export default function Unlock() {
       manual: true,
       onError: () => {
         message.error({
-          message: "Unlock failed, please confirm the password is correct",
+          message: "Не удалось разблокировать приложение. Проверьте пароль",
         });
       },
     },
@@ -37,9 +37,9 @@ export default function Unlock() {
     async () => {
       const isContinue = await new Promise((resolve) => {
         modal.confirm({
-          title: <span>Warning</span>,
+          title: <span>Предупреждение</span>,
           content:
-            "All application data will be reset soon, whether to continue",
+            "Все данные приложения будут сброшены. Продолжить?",
           onOk: () => {
             resolve(true);
           },
@@ -59,7 +59,7 @@ export default function Unlock() {
       manual: true,
       onError: () => {
         message.error({
-          message: "Reset application failed",
+          message: "Не удалось сбросить данные приложения",
         });
       },
     },
@@ -79,7 +79,7 @@ export default function Unlock() {
           <LockIcon />
         </div>
         <Heading size="5" align="center" as="h2">
-          Application Locked
+          Приложение заблокировано
         </Heading>
         <Text
           as="p"
@@ -88,12 +88,12 @@ export default function Unlock() {
           color="gray"
           className={styles.hint}
         >
-          Enter your password to unlock
+          Введите пароль для разблокировки
         </Text>
         <div className={styles.passwordWrap}>
           <TextFieldPassword
             fullWidth
-            placeholder="Please enter the password"
+            placeholder="Введите пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyUp={onEnter}
@@ -107,7 +107,7 @@ export default function Unlock() {
             disabled={loading}
           >
             {loadCryptoLoading && <Spinner />}
-            {loadCryptoLoading ? "Unlocking..." : "Unlock"}
+            {loadCryptoLoading ? "Разблокировка..." : "Разблокировать"}
           </Button>
         </div>
         <div className={styles.resetWrap}>
@@ -118,7 +118,7 @@ export default function Unlock() {
             onClick={onReset}
             disabled={loading}
           >
-            Reset all data
+            Сбросить все данные
           </Button>
         </div>
       </div>

@@ -54,7 +54,7 @@ export default function AuthTitleBar() {
             type="button"
             className={styles.updateBtn}
             onClick={() => setOpenUpdateDialog(true)}
-            title="Update available"
+            title="Доступно обновление"
           >
             <UpgradeIcon />
           </button>
@@ -70,7 +70,7 @@ export default function AuthTitleBar() {
               type="button"
               className={styles.winControlsBtn}
               onClick={() => getCurrentWindow().minimize()}
-              title="Minimize"
+              title="Свернуть"
             >
               <WindowMinimizeIcon />
             </button>
@@ -78,7 +78,7 @@ export default function AuthTitleBar() {
               type="button"
               className={styles.winControlsBtn}
               onClick={() => getCurrentWindow().toggleMaximize()}
-              title="Maximize"
+              title="Развернуть"
             >
               {isMaximized ? <WindowRestoreIcon /> : <WindowMaximizeIcon />}
             </button>
@@ -89,7 +89,7 @@ export default function AuthTitleBar() {
                 styles.winControlsBtnClose,
               )}
               onClick={() => getCurrentWindow().close()}
-              title="Close"
+              title="Закрыть"
             >
               <WindowCloseIcon />
             </button>

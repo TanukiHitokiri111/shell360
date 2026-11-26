@@ -43,7 +43,7 @@ export default function FileEditorModal({
           return;
         }
         message.error({
-          message: `Failed to load "${getSftpBasename(file.path)}": ${getErrorMessage(err)}`,
+          message: `Не удалось загрузить "${getSftpBasename(file.path)}": ${getErrorMessage(err)}`,
         });
         onClose();
       })
@@ -64,12 +64,12 @@ export default function FileEditorModal({
     try {
       await onSave(content);
       message.success({
-        message: `Saved "${getSftpBasename(filePath)}"`,
+        message: `Сохранено "${getSftpBasename(filePath)}"`,
       });
       onClose();
     } catch (err: unknown) {
       message.error({
-        message: `Failed to save "${getSftpBasename(filePath)}": ${getErrorMessage(err)}`,
+        message: `Не удалось сохранить "${getSftpBasename(filePath)}": ${getErrorMessage(err)}`,
       });
     } finally {
       setSaving(false);
@@ -90,7 +90,7 @@ export default function FileEditorModal({
       <div className={styles.modal}>
         <div className={styles.header}>
           <FileIcon />
-          <div className={styles.title}>Edit File: {file?.name}</div>
+          <div className={styles.title}>Изменить файл: {file?.name}</div>
           <button
             type="button"
             className={styles.iconButton}
@@ -102,13 +102,13 @@ export default function FileEditorModal({
         </div>
         <div className={styles.content}>
           {loading ? (
-            <div className={styles.loadingWrap}>Loading...</div>
+            <div className={styles.loadingWrap}>Загрузка...</div>
           ) : (
             <textarea
               className={styles.editor}
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="File content..."
+              placeholder="Содержимое файла..."
               disabled={saving}
             />
           )}
@@ -120,7 +120,7 @@ export default function FileEditorModal({
             onClick={handleCancel}
             disabled={saving}
           >
-            Cancel
+            Отмена
           </button>
           <button
             type="button"
@@ -128,7 +128,7 @@ export default function FileEditorModal({
             onClick={handleSave}
             disabled={loading || saving}
           >
-            {saving ? "Saving..." : "Save"}
+            {saving ? "Сохранение..." : "Сохранить"}
           </button>
         </div>
       </div>

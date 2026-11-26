@@ -16,9 +16,9 @@ export default function ErrorBoundaryFallback({
 }: AbnormalProps) {
   const onReset = useCallback(async () => {
     const answer = await ask(
-      "This operation will clear all app configurations, are you sure you want to continue?",
+      "Все настройки приложения будут удалены. Продолжить?",
       {
-        title: "Warning",
+        title: "Предупреждение",
         kind: "warning",
       },
     );
@@ -42,7 +42,7 @@ export default function ErrorBoundaryFallback({
         </div>
       </div>
       <div className={styles.titleWrap}>
-        <h1 className={styles.title}>Oops!</h1>
+        <h1 className={styles.title}>Произошла ошибка</h1>
       </div>
       <div className={styles.messageWrap}>
         <p className={styles.message}>{get(error, "message", String(error))}</p>
@@ -54,17 +54,17 @@ export default function ErrorBoundaryFallback({
         style={{ maxWidth: 420, margin: "0 auto" }}
       >
         <Button style={{ flex: 1 }} onClick={resetErrorBoundary}>
-          Retry
+          Повторить
         </Button>
         <Button style={{ flex: 1 }} color="red" onClick={onReset}>
-          Reset
+          Сбросить
         </Button>
         <Button
           style={{ flex: 1 }}
           color="amber"
           onClick={() => getCurrentWindow().close()}
         >
-          Exit
+          Выход
         </Button>
       </Flex>
     </div>

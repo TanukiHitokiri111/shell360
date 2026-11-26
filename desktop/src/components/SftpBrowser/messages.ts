@@ -1,6 +1,6 @@
 export { getSftpBasename } from "shared";
 
-export function getErrorMessage(err: unknown, fallback = "Unknown error") {
+export function getErrorMessage(err: unknown, fallback = "Неизвестная ошибка") {
   if (err instanceof Error) {
     return err.message || fallback;
   }

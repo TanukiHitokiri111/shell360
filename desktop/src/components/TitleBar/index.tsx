@@ -78,16 +78,16 @@ export default function TitleBar() {
           title={
             hasTerminal
               ? visible
-                ? "Hide workspace"
-                : "Show workspace"
-              : "No terminal open"
+                ? "Скрыть рабочую область"
+                : "Показать рабочую область"
+              : "Нет открытых терминалов"
           }
           disabled={!hasTerminal}
         >
           <span className={styles.workspaceBtnIcon}>
             <WorkspaceIcon />
           </span>
-          <span className={styles.workspaceBtnLabel}>Workspace</span>
+          <span className={styles.workspaceBtnLabel}>Рабочая область</span>
         </button>
       </div>
 
@@ -95,13 +95,13 @@ export default function TitleBar() {
         <button
           type="button"
           className={styles.searchTrigger}
-          title="Quick search"
+          title="Быстрый поиск"
           onClick={() => setSearchOpen(true)}
         >
           <span className={styles.searchTriggerIcon}>
             <SearchIcon />
           </span>
-          <span className={styles.searchTriggerLabel}>Search</span>
+          <span className={styles.searchTriggerLabel}>Поиск</span>
           <span className={styles.searchTriggerShortcut}>
             {isMacos ? "\u2318 K" : "Ctrl K"}
           </span>
@@ -116,7 +116,7 @@ export default function TitleBar() {
             type="button"
             className={styles.updateBtn}
             onClick={() => setOpenUpdateDialog(true)}
-            title="Update available"
+            title="Доступно обновление"
           >
             <UpgradeIcon />
           </button>
@@ -132,7 +132,7 @@ export default function TitleBar() {
               type="button"
               className={styles.winControlsBtn}
               onClick={() => getCurrentWindow().minimize()}
-              title="Minimize"
+              title="Свернуть"
             >
               <WindowMinimizeIcon />
             </button>
@@ -140,7 +140,7 @@ export default function TitleBar() {
               type="button"
               className={styles.winControlsBtn}
               onClick={() => getCurrentWindow().toggleMaximize()}
-              title="Maximize"
+              title="Развернуть"
             >
               {isMaximized ? <WindowRestoreIcon /> : <WindowMaximizeIcon />}
             </button>
@@ -151,7 +151,7 @@ export default function TitleBar() {
                 styles.winControlsBtnClose,
               )}
               onClick={() => getCurrentWindow().close()}
-              title="Close"
+              title="Закрыть"
             >
               <WindowCloseIcon />
             </button>

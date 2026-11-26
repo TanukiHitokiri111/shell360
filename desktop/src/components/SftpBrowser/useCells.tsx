@@ -70,8 +70,8 @@ export default function useCells({
   const onDelete = useCallback(
     (row: SSHSftpFile) => {
       modal.confirm({
-        title: "Delete Confirmation",
-        content: `Are you sure to delete ${row.name}?`,
+        title: "Подтверждение удаления",
+        content: `Удалить ${row.name}?`,
         OkButtonProps: {
           color: "orange",
         },
@@ -92,7 +92,7 @@ export default function useCells({
       {
         id: "name",
         key: "name",
-        title: "Name",
+        title: "Имя",
         compare: (a: SSHSftpFile, b: SSHSftpFile) =>
           b.name.localeCompare(a.name),
         maxWidth: 320,
@@ -138,7 +138,7 @@ export default function useCells({
       {
         id: "mtime",
         key: "mtime",
-        title: "Date Modified",
+        title: "Дата изменения",
         compare: (a: SSHSftpFile, b: SSHSftpFile) => b.mtime - a.mtime,
         width: 170,
         maxWidth: 170,
@@ -148,7 +148,7 @@ export default function useCells({
       {
         id: "size",
         key: "size",
-        title: "Size",
+        title: "Размер",
         width: 120,
         maxWidth: 120,
         minWidth: 120,

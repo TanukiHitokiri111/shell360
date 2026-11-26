@@ -29,7 +29,7 @@ export function LocalTerminalLoading({
     <div className={styles.root} style={sx}>
       <div className={styles.panel}>
         <div className={styles.header}>
-          <div className={styles.title}>Local Terminal</div>
+          <div className={styles.title}>Локальный терминал</div>
           {onClose && (
             <IconButton variant="ghost" color="gray" size="1" onClick={onClose}>
               <CloseIcon />
@@ -45,7 +45,7 @@ export function LocalTerminalLoading({
         {loading && !error && (
           <Flex align="center" justify="center" gap="2" p="4">
             <Spinner />
-            <span>Starting shell...</span>
+            <span>Запуск оболочки...</span>
           </Flex>
         )}
         {error && (
@@ -54,12 +54,12 @@ export function LocalTerminalLoading({
               <Callout.Text>
                 {typeof error === "string"
                   ? error
-                  : (error?.message ?? "Failed to start shell")}
+                  : (error?.message ?? "Не удалось запустить оболочку")}
               </Callout.Text>
             </Callout.Root>
             <Flex justify="center" mt="3">
               <Button onClick={onRetry} variant="soft">
-                Retry
+                Повторить
               </Button>
             </Flex>
           </div>
