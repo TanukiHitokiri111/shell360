@@ -1,143 +1,44 @@
-# Shell360
+# Shell360 — русская версия
 
-![gallary](./resources/screenshots/gallary.jpg)
+Русскоязычный SSH- и SFTP-клиент для работы с удалёнными серверами. Этот репозиторий — форк проекта [Shell360](https://github.com/nashaofu/shell360), адаптированный для пользователей Windows и Linux.
 
-<p align="center">
-  <span>English</span> | <a href="./README-zh_cn.md">简体中文</a>
-</p>
+## Возможности
 
-<p align="center">
-  Shell360 is a cross-platform SSH & SFTP client supporting Windows, macOS, Linux, Android, and iOS.
-Whether it's remote development, server management, or secure file transfer, Shell360 provides you with a consistent, smooth, and secure user experience.
-</p>
+- Подключение к серверам по SSH, в том числе с паролями и ключами.
+- Работа с файлами по SFTP: просмотр каталогов, передача и редактирование файлов.
+- Сохранение подключений и ключей, подключение через промежуточные серверы.
+- Проброс портов и работа с локальным терминалом.
+- Настройка внешнего вида, шрифтов и параметров терминала.
+- Импорт и экспорт настроек приложения.
 
-## Quick install
+Основные экраны, формы и диалоги переведены на русский язык. Технические названия протоколов, сообщения удалённых серверов и отдельные ошибки библиотек могут отображаться на английском.
 
-- macOS
+## Скачать и установить
 
-  ```
-  brew install --cask shell360
-  ```
+Откройте [страницу сборок](../../actions/workflows/russian-build.yml). В успешных запусках доступны архивы установщиков для Windows x64 (`.exe`) и Linux x64 (`.deb`). Для скачивания артефактов GitHub Actions может понадобиться авторизация. Если сборка завершилась ошибкой, соответствующего установщика в ней не будет.
 
-- Windows
+- **Windows 10/11 x64:** распакуйте архив и запустите установщик `.exe`.
+- **Linux x64:** распакуйте архив и установите пакет, например `sudo apt install ./имя-пакета.deb`.
 
-  ```
-  winget install nashaofu.shell360
-  # or
-  scoop install shell360
-  ```
+Сборки форка не подписаны собственным сертификатом; Windows может показать предупреждение SmartScreen. Перед заменой ранее установленной версии создайте резервную копию настроек и ключей. Совместимость и сохранность данных при обновлении оригинального приложения не проверены.
 
-## Download
+## Сборка из исходников
 
-Download the latest version of Shell360 for your platform:
+Нужны Node.js 24 или новее, pnpm 11.21.0, Rust и системные зависимости Tauri 2. На Windows необходимы инструменты сборки Visual Studio с компонентами C++ и WebView2; для Linux — библиотеки WebKitGTK 4.1 и GTK.
 
-<p align="center">
-  <a href="https://apps.apple.com/app/shell360/id6502880351">
-    <img src="./resources/app-store.svg" width="123" alt="Download on the App Store" />
-  </a>
-  <a href="https://play.google.com/store/apps/details?id=com.nashaofu.shell360">
-    <img src="./resources/GooglePlay.png" width="140" alt="Download on Google Play" />
-  </a>
-  <a href="https://appgallery.huawei.com/app/detail?id=com.nashaofu.shell360">
-    <img src="./resources/AppGallery.svg" width="119" alt="Download on App Gallery" />
-  </a>
-</p>
-<p align="center">
-  <a href="https://github.com/nashaofu/shell360/releases">
-    <img
-      src="https://img.shields.io/badge/Download%20for%20Windows-blue?style=for-the-badge"
-      alt="Download for Windows"
-    />
-  </a>
-  <a href="https://github.com/nashaofu/shell360/releases">
-    <img src="https://img.shields.io/badge/Download%20for%20macOS-blue?style=for-the-badge" alt="Download for macOS" />
-  </a>
-  <a href="https://github.com/nashaofu/shell360/releases">
-    <img src="https://img.shields.io/badge/Download%20for%20Linux-blue?style=for-the-badge" alt="Download for Linux" />
-  </a>
-  <a href="https://github.com/nashaofu/shell360/releases">
-    <img
-      src="https://img.shields.io/badge/Download%20for%20Android-blue?style=for-the-badge"
-      alt="Download for Android"
-    />
-  </a>
-    <a href="https://github.com/nashaofu/shell360/releases">
-    <img
-      src="https://img.shields.io/badge/Download%20for%20HarmonyOS-blue?style=for-the-badge"
-      alt="Download for HarmonyOS"
-    />
-  </a>
-</p>
+```bash
+pnpm install --frozen-lockfile
+pnpm tauri build --config src-tauri/tauri.ru-build.json
+```
 
-Join our [TestFlight](https://testflight.apple.com/join/teqJZCRm) Or [Google Play](https://play.google.com/apps/testing/com.nashaofu.shell360) testing program for early access to new features.
+Результаты сборки размещаются в `target/release/bundle/`. Автоматические сборки Windows и Linux описаны в `.github/workflows/russian-build.yml`.
 
-## Features
+## Обновления и безопасность
 
-### 🔐 Secure Connection
+Автоматические обновления из оригинального проекта в этом форке отключены, чтобы они не заменили русскую версию оригинальной. Обновляйте приложение сборками из этого репозитория.
 
-- Advanced SSH client with support for password, public key, certificate, SSH Agent, and keyboard-interactive authentication methods
-- Multi-factor authentication (MFA) support
-- Support for ED25519, RSA, and ECDSA SSH keys
-- Application data encryption for enhanced security
-- Support for jump host connection, convenient cross-server management
+Не отправляйте пароли, приватные SSH-ключи и конфигурации с секретами при создании обращений. Если возникла ошибка, приложите версию приложения, ОС и описание действий без секретных данных.
 
-### 📁 File Management
+## Лицензия
 
-- Powerful SFTP client for file transfer
-
-### 🔄 Port Forwarding
-
-- Local port forwarding
-- Remote port forwarding
-- Dynamic port forwarding (SOCKS proxy)
-
-### 🎨 Customizable Themes
-
-- Light and dark theme support
-- 6 built-in terminal themes
-- Support for custom terminal fonts
-
-### 💻 Cross-Platform Compatibility
-
-- Consistent experience across Windows, macOS, Linux, Android, and iOS
-- Support for importing/exporting app configurations for easy synchronization between devices
-
-## Technology Stack
-
-Shell360 is built with modern technologies:
-
-- **Frontend**: TypeScript, React
-- **Backend**: Rust
-- **Framework**: Tauri (for cross-platform support)
-- **SSH Implementation**: Custom Rust SSH plugin
-- **Data Storage**: Encrypted local storage
-
-## Screenshots
-
-![Mobile Gallery](./resources/screenshots/mobile-gallary.jpg)
-
-![Pad Gallery](./resources/screenshots/pad-gallary.jpg)
-
-### Terminal Themes
-
-![Terminal Themes](./resources/screenshots/terminal-themes.jpg)
-
-## Privacy Policy
-
-Your privacy is important to us. Please review our [Privacy Policy](./docs/Privacy-Policy.md) to understand how we handle your data.
-
-## Contributing
-
-We welcome contributions from the community! Please read our [Contribution Guidelines](./docs/CONTRIBUTING.md) to get started.
-See the [documentation center](./docs/README.md) for platform and architecture guides.
-
-## License
-
-This project is licensed under the terms of the GNU General Public License v3.0 (GPLv3).
-See the [LICENSE](./LICENSE) file for details.
-
-SPDX-License-Identifier: GPL-3.0-or-later
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=nashaofu/shell360&type=date&legend=top-left)](https://www.star-history.com/#nashaofu/shell360&type=date&legend=top-left)
+Проект распространяется по лицензии GPL-3.0-or-later. Условия и уведомления об авторских правах сохранены в файле [LICENSE](LICENSE).
